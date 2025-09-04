@@ -37,13 +37,13 @@
   /* Painel anúncio no canto */
   .fixed-announcement {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 300px;
-    max-width: 90%;
-    padding: 20px;
-    border-radius: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    top: 30px;
+    left: 30px;
+    width: 360px; /* maior */
+    max-width: 95%;
+    padding: 24px;
+    border-radius: 24px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45);
     border: 1px solid rgba(255,255,255,0.08);
     z-index: 50;
     text-align: center;
@@ -75,18 +75,21 @@
 
 <!-- Painel de anúncio no canto -->
 <section class="fixed-announcement glass parallax">
-  <div class="text-3xl mb-2">⚡🤖</div>
-  <h2 class="font-bold text-lg">Aviso sobre o NeuroScript</h2>
-  <p class="text-sm mt-2">
+  <div class="text-4xl mb-3">⚡🤖</div>
+  <h2 class="font-bold text-xl mb-2">Aviso sobre o NeuroScript</h2>
+  <p class="text-sm leading-relaxed">
     Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
     O script está em desenvolvimento e pode apresentar alguns bugs.
   </p>
-  <ul class="mt-3 text-xs space-y-1">
+  <ul class="mt-4 text-sm space-y-1">
     <li>🛠️ Estado: Em desenvolvimento</li>
     <li>🐞 Bugs: Possíveis — reporte no suporte</li>
     <li>🌱 Uso: Fase de teste</li>
     <li>✍️ Autor: Jhon</li>
   </ul>
+  <button class="mt-5 w-full bg-gray-600 hover:bg-gray-700 text-white rounded-lg py-2 text-sm font-semibold shadow-md cursor-not-allowed opacity-80">
+    ☎ Suporte (Em desenvolvimento)
+  </button>
 </section>
 
 <!-- Menu central -->
@@ -110,7 +113,7 @@
 </footer>
 
 <script>
-  // Botão
+  // Botão script
   const getScriptBtn = document.getElementById('getScriptBtn');
   getScriptBtn.addEventListener('click', () => {
     const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
