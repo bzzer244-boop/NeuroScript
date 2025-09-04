@@ -12,6 +12,11 @@
     overflow-x: hidden;
     background: #020617;
     color: #f0f0f0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   /* Fundo tecnológico */
@@ -25,45 +30,42 @@
   }
 
   .glass {
-    background: rgba(255,255,255,0.03);
-    backdrop-filter: blur(6px);
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(8px);
   }
 
-  /* Painel anúncio sempre no canto */
+  /* Painel anúncio no canto */
   .fixed-announcement {
     position: fixed;
     top: 20px;
     left: 20px;
-    width: 280px;
+    width: 300px;
     max-width: 90%;
     padding: 20px;
-    border-radius: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255,255,255,0.05);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.08);
     z-index: 50;
+    text-align: center;
   }
 
-  .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
-  .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
-  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
-  .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
-  .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
-
-  .parallax { transition: transform 0.1s ease-out; }
+  /* Menu central */
+  main {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    text-align: center;
+    z-index: 40;
+  }
 
   img.logo {
-    max-width: 100%;
+    max-width: 180px;
+    margin: 0 auto 20px auto;
     border-radius: 12px;
-    margin-bottom: 20px;
   }
 
-  /* Dá espaço para o conteúdo principal não colidir com o painel */
-  main {
-    margin-left: 320px; /* espaço suficiente do painel */
-    padding: 40px 20px;
+  .parallax {
+    transition: transform 0.15s ease-out;
   }
 </style>
 </head>
@@ -71,49 +73,39 @@
 
 <canvas id="bgCanvas"></canvas>
 
-<!-- Painel de anúncio -->
+<!-- Painel de anúncio no canto -->
 <section class="fixed-announcement glass parallax">
-  <div class="emoji-top">⚡🤖</div>
-  <h2>Aviso sobre o NeuroScript</h2>
-  <p>
-    Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
+  <div class="text-3xl mb-2">⚡🤖</div>
+  <h2 class="font-bold text-lg">Aviso sobre o NeuroScript</h2>
+  <p class="text-sm mt-2">
+    Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
     O script está em desenvolvimento e pode apresentar alguns bugs.
   </p>
-  <ul class="grid grid-cols-1 gap-1">
+  <ul class="mt-3 text-xs space-y-1">
     <li>🛠️ Estado: Em desenvolvimento</li>
     <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-    <li>🌱 Uso: Fase de teste, poucos usuários</li>
+    <li>🌱 Uso: Fase de teste</li>
     <li>✍️ Autor: Jhon</li>
   </ul>
-  <button class="mt-4 w-full bg-gray-600 text-white rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
-    ☎ Suporte (Em desenvolvimento)
-  </button>
 </section>
 
-<!-- Parte principal -->
-<main class="w-full max-w-3xl text-center parallax">
-  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
-    <!-- Logo -->
-    <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
-
-    <!-- Título -->
-    <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
-    <p class="text-slate-300 mb-6 text-sm md:text-base">
-      Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
-    </p>
-
-    <!-- Botão seguro -->
-    <button id="getScriptBtn" class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
-      Obter Script
-    </button>
-
-    <div class="mt-6 text-xs md:text-sm text-slate-400">
-      🔒 Link protegido — não é possível copiar diretamente
-    </div>
-  </section>
+<!-- Menu central -->
+<main class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax">
+  <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo">
+  <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
+  <p class="text-slate-300 mb-6 text-sm md:text-base">
+    Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
+  </p>
+  <button id="getScriptBtn" 
+          class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 px-8 rounded-2xl shadow-lg transition">
+    Obter Script
+  </button>
+  <div class="mt-6 text-xs md:text-sm text-slate-400">
+    🔒 Link protegido — não é possível copiar diretamente
+  </div>
 </main>
 
-<footer class="mt-8 text-slate-500 text-xs md:text-sm text-center">
+<footer class="mt-8 text-slate-500 text-xs md:text-sm">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
@@ -126,7 +118,7 @@
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-  // Parallax com mouse
+  // Parallax
   const parallaxElems = document.querySelectorAll('.parallax');
   document.addEventListener('mousemove', e => {
     const x = (e.clientX / window.innerWidth - 0.5) * 20;
@@ -134,12 +126,11 @@
     parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
-  // Fundo tecnológico com partículas
+  // Fundo tecnológico
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   const particles = [];
   const particleCount = 80;
 
@@ -167,16 +158,11 @@
     }
   }
 
-  for(let i=0;i<particleCount;i++){
-    particles.push(new Particle());
-  }
+  for(let i=0;i<particleCount;i++){ particles.push(new Particle()); }
 
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{
-      p.update();
-      p.draw();
-    });
+    particles.forEach(p=>{ p.update(); p.draw(); });
     requestAnimationFrame(animate);
   }
   animate();
