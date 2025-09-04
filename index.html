@@ -163,7 +163,7 @@
     parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // Fundo tecnológico com bolinhas azuis
+  // Fundo tecnológico com bolinhas azuis conectadas
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -171,6 +171,7 @@
 
   const particles = [];
   const particleCount = 80;
+  const maxDistance = 120;
 
   class Particle {
     constructor(){
@@ -191,7 +192,7 @@
     draw(){
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(0, 150, 255, 0.6)'; // bolinhas azuis
+      ctx.fillStyle = 'rgba(0,150,255,0.6)';
       ctx.fill();
     }
   }
@@ -200,12 +201,31 @@
     particles.push(new Particle());
   }
 
+  function drawLines(){
+    for(let i=0;i<particleCount;i++){
+      for(let j=i+1;j<particleCount;j++){
+        let dx = particles[i].x - particles[j].x;
+        let dy = particles[i].y - particles[j].y;
+        let dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < maxDistance){
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,150,255,${1 - dist/maxDistance})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p=>{
       p.update();
       p.draw();
     });
+    drawLines();
     requestAnimationFrame(animate);
   }
 
