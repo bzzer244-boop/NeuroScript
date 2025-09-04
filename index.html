@@ -50,7 +50,7 @@
   }
 
   @media(min-width:768px){
-    .fixed-announcement{
+    .fixed-announcement {
       position: fixed;
       top: 20px;
       left: 20px;
@@ -65,21 +65,30 @@
   .fixed-announcement ul li { font-size: 0.85rem; }
   .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
 
-  img.logo { max-width: 200px; border-radius: 12px; margin-bottom: 20px; }
+  img.logo {
+    max-width: 200px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
 
   main {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
-    flex: 1;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
   }
 
-  .parallax-section { text-align: center; }
+  .parallax-section {
+    text-align: center;
+    transition: transform 0.1s ease-out;
+  }
 
   footer {
     text-align: center;
-    margin-top: auto;
+    margin-top: 20px;
     padding: 10px 0;
     font-size: 0.85rem;
     color: #999;
@@ -90,6 +99,7 @@
 
 <canvas id="bgCanvas"></canvas>
 
+<!-- Painel de anúncio -->
 <section class="fixed-announcement glass">
   <div class="emoji-top">⚡🤖</div>
   <h2>Aviso sobre o NeuroScript</h2>
@@ -108,6 +118,7 @@
   </button>
 </section>
 
+<!-- Parte principal -->
 <main>
   <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax-section">
     <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
@@ -132,10 +143,10 @@
   // Botão
   const getScriptBtn = document.getElementById('getScriptBtn');
   getScriptBtn.addEventListener('click', () => {
-    window.open('https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server','_blank');
+    window.open('https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server', '_blank');
   });
 
-  // Parallax
+  // Parallax leve
   const parallaxSection = document.querySelector('.parallax-section');
   document.addEventListener('mousemove', e => {
     const x = (e.clientX / window.innerWidth - 0.5) * 10;
@@ -143,59 +154,91 @@
     parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // Fundo tecnológico: partículas azuis
+  // Canvas tecnológico
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  let width = canvas.width = window.innerWidth;
+  let height = canvas.height = window.innerHeight;
 
   const particles = [];
   const particleCount = 100;
+  const maxDistance = 120;
+
+  const mouse = { x: null, y: null };
+
+  document.addEventListener('mousemove', e => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
 
   class Particle {
     constructor() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 2 + 1;
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.radius = Math.random() * 2 + 1.5;
       this.speedX = (Math.random() - 0.5) * 0.5;
       this.speedY = (Math.random() - 0.5) * 0.5;
     }
     update() {
+      // Movimento normal
       this.x += this.speedX;
       this.y += this.speedY;
-      if(this.x < 0) this.x = canvas.width;
-      if(this.x > canvas.width) this.x = 0;
-      if(this.y < 0) this.y = canvas.height;
-      if(this.y > canvas.height) this.y = 0;
+
+      // Limites da tela
+      if (this.x < 0) this.x = width;
+      if (this.x > width) this.x = 0;
+      if (this.y < 0) this.y = height;
+      if (this.y > height) this.y = 0;
+
+      // Aproximação do mouse
+      if (mouse.x && mouse.y) {
+        const dx = mouse.x - this.x;
+        const dy = mouse.y - this.y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < 100) {
+          this.x += dx * 0.01; // ajusta a velocidade de atração
+          this.y += dy * 0.01;
+        }
+      }
     }
     draw() {
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(0,150,255,0.8)';
       ctx.fill();
     }
   }
 
-  for(let i=0;i<particleCount;i++){
+  for(let i=0; i<particleCount; i++){
     particles.push(new Particle());
   }
 
+  function drawLines() {
+    for(let i=0; i<particleCount; i++){
+      for(let j=i+1; j<particleCount; j++){
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx*dx + dy*dy);
+        if(dist < maxDistance){
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(0,150,255,${1 - dist/maxDistance})`;
+          ctx.lineWidth = 0.5;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+  }
+
   function animate() {
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p => {
-      p.update();
-      p.draw();
-    });
+    ctx.clearRect(0,0,width,height);
+    particles.forEach(p => { p.update(); p.draw(); });
+    drawLines();
     requestAnimationFrame(animate);
   }
 
   animate();
 
   window.addEventListener('resize', () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
-</script>
-
-</body>
-</html>
+    width = canvas.width = window.innerWidth
