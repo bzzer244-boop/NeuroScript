@@ -57,16 +57,24 @@
     }
   }
 
-  .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
-  .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
-  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
-  .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
+  .emoji-top { font-size: 2.5rem; margin-bottom: 8px; }
+  .fixed-announcement h2 { font-size: 1.2rem; }
+  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; }
+  .fixed-announcement ul li { font-size: 0.85rem; }
   .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
 
   img.logo {
     max-width: 200px;
     border-radius: 12px;
     margin-bottom: 20px;
+  }
+
+  /* Centralização e proporção */
+  main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
 </style>
 </head>
@@ -94,8 +102,8 @@
 </section>
 
 <!-- Parte principal -->
-<main class="w-full max-w-3xl mx-auto mt-20 px-4 md:px-0 text-center">
-  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
+<main class="w-full max-w-3xl mt-20 px-4 md:px-0">
+  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax-section text-center">
 
     <!-- Logo -->
     <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
@@ -129,6 +137,14 @@
     window.open(url, '_blank');
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
+
+  // Parallax leve para toda a seção
+  const parallaxSection = document.querySelector('.parallax-section');
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 10; // ajuste leve
+    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+    parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
+  });
 
   // Fundo tecnológico com partículas
   const canvas = document.getElementById('bgCanvas');
@@ -180,15 +196,6 @@
   window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-  });
-
-  // Parallax leve (opcional)
-  document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 5;
-    const y = (e.clientY / window.innerHeight - 0.5) * 5;
-    // Aplica apenas em elementos decorativos ou fundo
-    // Aqui mantemos leve, não desloca main nem painel
-    canvas.style.transform = `translate(${x}px, ${y}px)`;
   });
 </script>
 
