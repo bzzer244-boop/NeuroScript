@@ -54,23 +54,19 @@
 
   @keyframes neonPulse {
     0% {
-      box-shadow:
-        0 0 4px rgba(0, 255, 255, 0.5),
-        0 0 8px rgba(0, 255, 255, 0.3),
-        0 0 12px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 4px rgba(0, 255, 255, 0.5),
+                  0 0 8px rgba(0, 255, 255, 0.3),
+                  0 0 12px rgba(0, 255, 255, 0.2);
     }
     100% {
-      box-shadow:
-        0 0 10px rgba(0, 255, 255, 0.6),
-        0 0 20px rgba(0, 255, 255, 0.4),
-        0 0 25px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 10px rgba(0, 255, 255, 0.6),
+                  0 0 20px rgba(0, 255, 255, 0.4),
+                  0 0 25px rgba(0, 255, 255, 0.2);
     }
   }
 
-  .fixed-announcement {
+  .fixed-announcement, .fixed-reviews, .fixed-pro {
     position: fixed;
-    top: 30px;
-    left: 30px;
     width: 360px;
     max-width: 95%;
     padding: 24px;
@@ -78,6 +74,10 @@
     z-index: 50;
     text-align: center;
   }
+
+  .fixed-announcement { top: 30px; left: 30px; }
+  .fixed-reviews { bottom: 30px; left: 30px; }
+  .fixed-pro { top: 30px; right: 30px; }
 
   main {
     width: 100%;
@@ -98,48 +98,12 @@
     transition: transform 0.15s ease-out;
   }
 
-  /* Avaliações */
-  .reviews-box {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 280px;
-    max-width: 90%;
-    padding: 16px;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    z-index: 50;
-  }
-
-  /* Versão PRO */
-  .pro-box {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 280px;
-    max-width: 90%;
-    padding: 16px;
-    border-radius: 16px;
-    font-size: 0.9rem;
-    z-index: 50;
-    text-align: center;
-  }
-
-  /* Mensagem de cópia */
-  #copyMessage {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,255,200,0.1);
-    border: 1px solid rgba(0,255,200,0.4);
-    padding: 12px 20px;
-    border-radius: 12px;
-    color: #0ff;
+  #copiedMessage {
+    display: none;
+    margin-top: 15px;
+    color: #00ffcc;
     font-weight: bold;
-    opacity: 0;
-    transition: opacity 0.4s ease-in-out;
-    z-index: 100;
+    text-shadow: 0 0 10px #00ffcc;
   }
 </style>
 </head>
@@ -155,84 +119,111 @@
     Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
     O script está em desenvolvimento e pode apresentar alguns bugs.
   </p>
+  <ul class="mt-4 text-sm space-y-1">
+    <li>🛠️ Estado: Em desenvolvimento</li>
+    <li>🐞 Bugs: Possíveis — reporte no suporte</li>
+    <li>🌱 Uso: Fase de teste</li>
+    <li>✍️ Autor: Jhon</li>
+  </ul>
 </section>
 
-<!-- Avaliações -->
-<div class="reviews-box glass neon-glow parallax">
-  <h3 class="font-bold text-lg mb-2">📢 Avaliações</h3>
-  <p id="reviewText">Carregando avaliações...</p>
-</div>
+<!-- Painel Avaliações -->
+<section class="fixed-reviews glass parallax neon-glow">
+  <h2 class="font-bold text-lg mb-3">⭐ Avaliações</h2>
+  <p id="reviewText" class="text-sm text-slate-300 italic"></p>
+</section>
 
-<!-- Versão PRO -->
-<div class="pro-box glass neon-glow parallax">
-  <h3 class="font-bold text-lg mb-2">⭐ Obter Versão PRO</h3>
-  <button id="getProBtn" 
-    class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded-lg shadow-md transition">
+<!-- Painel Pro -->
+<section class="fixed-pro glass parallax neon-glow">
+  <h2 class="font-bold text-lg mb-3">🚀 Obter versão PRO</h2>
+  <button id="proBtn" 
+    class="bg-green-600 hover:bg-green-700 text-white w-full rounded-lg py-2 text-sm font-semibold shadow-md">
     Acessar Versão PRO
   </button>
-</div>
+</section>
 
 <!-- Menu central -->
 <main class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax neon-glow">
   <div class="flex justify-center mb-6">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="Logo NeuroScript" class="logo">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="" class="logo">
   </div>
 
   <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
   <p class="text-slate-300 mb-6 text-sm md:text-base">
-    Escolha sua versão abaixo.
+    Escolha abaixo a versão que deseja usar.
   </p>
 
-  <!-- Versão Free -->
-  <button id="getFreeBtn" 
+  <!-- Botão Free -->
+  <button id="freeBtn" 
           class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 px-8 rounded-2xl shadow-lg transition">
     Versão Free
   </button>
-
-  <div class="mt-6 text-xs md:text-sm text-slate-400">
-    🔒 Link protegido — cópia direta bloqueada
-  </div>
+  <div id="copiedMessage">✅ Script copiado com sucesso!</div>
 </main>
-
-<!-- Mensagem de cópia -->
-<div id="copyMessage">✅ Script copiado com sucesso!</div>
 
 <footer class="mt-8 text-slate-500 text-xs md:text-sm">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
 <script>
-  // Avaliações automáticas
-  const reviews = [
-    "🔥 Melhor script que já usei, super estável!",
-    "⭐ Ótimo desempenho e muito fácil de usar.",
-    "🚀 Atualizações constantes, recomendo!",
-    "💡 Simples, rápido e funcional.",
-    "✅ Nunca vi um suporte tão rápido assim!"
-  ];
-  const reviewText = document.getElementById('reviewText');
-  function changeReview(){
-    const random = Math.floor(Math.random() * reviews.length);
-    reviewText.textContent = reviews[random];
-  }
-  changeReview();
-  setInterval(changeReview, 4000);
+  // Botão Free -> copia código
+  const freeBtn = document.getElementById('freeBtn');
+  const copiedMessage = document.getElementById('copiedMessage');
+  freeBtn.addEventListener('click', () => {
+    const scriptCode = `loadstring(game:HttpGet("https://meusite.com/neuroscript-free"))()`;
+    navigator.clipboard.writeText(scriptCode).then(() => {
+      copiedMessage.style.display = 'block';
+      setTimeout(() => copiedMessage.style.display = 'none', 3000);
+    });
+  });
 
-  // Botão versão PRO
-  document.getElementById('getProBtn').addEventListener('click', () => {
+  // Botão PRO -> abre link
+  document.getElementById('proBtn').addEventListener('click', () => {
     window.open("https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server", "_blank");
   });
 
-  // Botão versão Free
-  const getFreeBtn = document.getElementById('getFreeBtn');
-  const copyMessage = document.getElementById('copyMessage');
-  getFreeBtn.addEventListener('click', () => {
-    const scriptCode = `print("NeuroScript Free ativado!")`; // <-- coloque aqui seu script real
-    navigator.clipboard.writeText(scriptCode).then(() => {
-      copyMessage.style.opacity = 1;
-      setTimeout(() => copyMessage.style.opacity = 0, 2000);
-    });
-  });
+  // Avaliações automáticas
+  const reviews = [
+    "🔥 Melhor script que já usei, super estável!", "⭐ Ótimo desempenho e muito fácil de usar.",
+    "🚀 Atualizações constantes, recomendo!", "💡 Simples, rápido e funcional.",
+    "✅ Nunca vi um suporte tão rápido assim!", "📌 Funciona em todos os jogos que testei.",
+    "⚡ Extremamente rápido e sem travamentos.", "🎯 Muito intuitivo e fácil de aprender.",
+    "🔒 Seguro e confiável, podem usar sem medo.", "🤖 Automação perfeita, ajuda demais!",
+    "✨ Interface bonita e organizada.", "💯 Melhor custo-benefício do mercado.",
+    "🎮 Experiência de jogo ficou incrível!", "🛠️ Equipe de suporte muito atenciosa.",
+    "📢 Sempre atualizado com novidades.", "🔥 Vale cada segundo, recomendo a todos.",
+    "💎 Um dos scripts mais completos que já vi.", "⚡ Desempenho impecável sem lag.",
+    "🎉 Uso diário e nunca tive problemas.", "🚀 Melhor escolha que fiz recentemente.",
+    "⭐ Estabilidade impressionante!", "📌 Muito útil em várias situações.",
+    "🔧 Configurações fáceis de ajustar.", "💡 Super recomendado para iniciantes.",
+    "🎯 Funcionalidades bem otimizadas.", "✅ Tudo funciona exatamente como prometido.",
+    "⚡ Surpreendeu minhas expectativas.", "📢 A comunidade em volta é muito ativa.",
+    "🎮 Torna a gameplay muito mais divertida.", "🔥 Sem dúvidas o melhor script do momento!"
+  ];
+
+  const users = [
+    "Lucas_Script","AnaDev","ProPlayer22","JoaozinFPS","MestreDoLua","ClaraMods","DarkHunterBR","JuliaCode",
+    "VipMaster77","RafaGameX","BrunoPlay","MarinaTech","PedroHackz","NathyScripts","LeoBRX","Xx_Gamer_xX",
+    "CodeMaster88","FabiMods","ThiagoPro","KellyLua","AndersonFPS","MariaTech","ZecaBR","GamerDoSul","CrisPlay",
+    "JoanaCodes","FelipeMods","Nerdzinho","LauraPlay","GuiLua","KauanGame","SofiaDev","EnzoScript","MikaPlay",
+    "PauloPro","Carolzinha","RickDev","BiancaFPS","OtavioLua","ManuGame","RobertoBR","LaraScripts","IgorPlay",
+    "IsabelaDev","CaioGamer","FernandaMods","HugoPlay","AliceBR","DiegoCode","CamilaTech","EduGamer","JulianaFPS",
+    "MateusMods","PatyDev","HenriqueLua","AlinePlay","ViniciusBR","HelenaCode","RafaelaScripts","DanielFPS",
+    "MarcelaPlay","VictorDev","BeatrizMods","SamuelLua","LuanaTech","DaviGamer","LarissaPlay","RodrigoFPS",
+    "VanessaDev","GustavoMods","PriscilaBR","LeonardoPlay","ThaisCode","RaphaelLua","NataliaTech","BrendaGamer",
+    "MauricioPro","KarenPlay","AndréFPS","PatriciaDev","LucianoMods","GabrielaBR","TiagoPlay","AmandaCode",
+    "FelixLua","MelissaTech","CesarFPS","JulioPlay","RuteDev","ClaudioMods","LeticiaBR","FernandoPlay","TatianeCode",
+    "RenatoLua","ElisaTech","MuriloFPS","YasminPlay","CristianoDev","CamiloMods","DayaneBR"
+  ];
+
+  const reviewText = document.getElementById('reviewText');
+  function changeReview(){
+    const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
+    const randomUser = users[Math.floor(Math.random() * users.length)];
+    reviewText.textContent = `${randomReview} — ${randomUser}`;
+  }
+  changeReview();
+  setInterval(changeReview, 4000);
 
   // Parallax
   const parallaxElems = document.querySelectorAll('.parallax');
