@@ -18,28 +18,33 @@
       position: fixed; 
       top: 20px; 
       left: 20px; 
-      width: 350px;  /* tamanho grande mas proporcional */
+      width: 90vw;  /* mobile default */
+      max-width: 350px; /* limite para PC */
       padding: 20px;
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.05);
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* conteúdo começa do topo */
       gap: 12px;
+      z-index: 50;
+    }
+    @media(min-width:768px){
+      .fixed-announcement{
+        width: 350px; /* PC maior */
+      }
     }
     button { cursor: pointer; }
-    img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; }
     .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
-    .fixed-announcement h2 { font-size: 1.2rem; margin-bottom: 6px; text-align: center; }
+    .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
     .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
     .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
     .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
   </style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-6 text-slate-100">
+<body class="min-h-screen flex flex-col items-center justify-center p-4 text-slate-100">
 
-  <!-- Anúncio fixo no canto esquerdo -->
+  <!-- Anúncio fixo no canto esquerdo / responsivo -->
   <section class="fixed-announcement glass">
     <div class="emoji-top">⚡🤖</div>
     <h2>Aviso sobre o NeuroScript</h2>
@@ -59,39 +64,41 @@
   </section>
 
   <!-- Parte principal centralizada -->
-  <main class="max-w-3xl w-full text-center mt-20">
+  <main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0">
     <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
-      <!-- Logo centralizada -->
-      <img src="logo.png" alt="NeuroScript Logo">
 
-      <h1 class="text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
-      <p class="text-slate-300 mb-6">Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.</p>
+      <!-- Logo centralizada no topo -->
+      <img src="https://files.fm/f/du66392u3j" alt="NeuroScript Logo" class="mx-auto mb-6 rounded-lg w-32 md:w-48">
+
+      <!-- Título -->
+      <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
+      <p class="text-slate-300 mb-6 text-sm md:text-base">
+        Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
+      </p>
 
       <!-- Botão seguro -->
       <button id="getScriptBtn"
-              class="bg-purple-600 hover:bg-purple-700 text-white text-xl font-bold py-4 px-10 rounded-2xl shadow-lg transition">
+              class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
         Obter Script
       </button>
 
-      <div class="mt-6 text-sm text-slate-400">
+      <div class="mt-6 text-xs md:text-sm text-slate-400">
         🔒 Link protegido — não é possível copiar diretamente
       </div>
     </section>
   </main>
 
   <!-- Rodapé -->
-  <footer class="mt-8 text-slate-500 text-sm">
+  <footer class="mt-8 text-slate-500 text-xs md:text-sm">
     © 2025 NeuroScript. Todos os direitos reservados.
   </footer>
 
   <script>
     const getScriptBtn = document.getElementById('getScriptBtn');
-
     getScriptBtn.addEventListener('click', () => {
       const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
       window.open(url, '_blank');
     });
-
     getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
   </script>
 
