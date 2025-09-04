@@ -18,8 +18,16 @@
       position: fixed; 
       top: 20px; 
       left: 20px; 
-      width: 350px; 
+      width: 400px;  /* Largura maior */
+      height: calc(100vh - 40px); /* Altura quase total */
       z-index: 50; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center; /* Centraliza verticalmente */
+      padding: 30px; /* Mais espaço interno */
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.05);
     }
     button { cursor: pointer; }
     img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; }
@@ -29,15 +37,15 @@
 <body class="min-h-screen flex flex-col items-center justify-center p-6 text-slate-100">
 
   <!-- Anúncio fixo no canto esquerdo -->
-  <section class="fixed-announcement glass rounded-2xl p-6 shadow-2xl border border-white/5">
-    <div class="flex flex-col gap-3 items-center">
+  <section class="fixed-announcement glass">
+    <div class="flex flex-col gap-3 items-center text-center">
       <div class="emoji-top">⚡🤖</div>
-      <h2 class="text-lg font-bold text-center">Aviso sobre o NeuroScript</h2>
-      <p class="text-slate-300 text-sm leading-relaxed text-center">
+      <h2 class="text-lg font-bold">Aviso sobre o NeuroScript</h2>
+      <p class="text-slate-300 text-sm leading-relaxed">
         Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
         O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
       </p>
-      <ul class="mt-2 text-xs grid grid-cols-1 gap-1 text-center">
+      <ul class="mt-2 text-xs grid grid-cols-1 gap-1">
         <li>🛠️ Estado: Em desenvolvimento</li>
         <li>🐞 Bugs: Possíveis — reporte no suporte</li>
         <li>🌱 Uso: Fase de teste, poucos usuários</li>
@@ -53,7 +61,7 @@
   <main class="max-w-3xl w-full text-center mt-20">
     <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
       <!-- Logo centralizada -->
-      <img src="/mnt/data/792c39d5-d4e2-45ae-b4eb-cc6057690b69.png" alt="NeuroScript Logo">
+      <img src="logo.png" alt="NeuroScript Logo">
 
       <h1 class="text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
       <p class="text-slate-300 mb-6">Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.</p>
