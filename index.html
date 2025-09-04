@@ -1,106 +1,190 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NeuroScript — Obter Script</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { 
-      background: linear-gradient(180deg,#0f172a 0%, #020617 100%); 
-      font-family: sans-serif; 
-    }
-    .glass { 
-      background: rgba(255,255,255,0.03); 
-      backdrop-filter: blur(6px); 
-    }
-    .fixed-announcement { 
-      position: fixed; 
-      top: 20px; 
-      left: 20px; 
-      width: 90vw;  /* mobile default */
-      max-width: 350px; /* limite para PC */
-      padding: 20px;
-      border-radius: 24px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      border: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 50;
-    }
-    @media(min-width:768px){
-      .fixed-announcement{
-        width: 350px; /* PC maior */
-      }
-    }
-    button { cursor: pointer; }
-    .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
-    .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
-    .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
-    .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
-    .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NeuroScript — Obter Script</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  body {
+    margin: 0;
+    font-family: sans-serif;
+    overflow-x: hidden;
+    background: #020617;
+    color: #f0f0f0;
+  }
+
+  /* Fundo tecnológico */
+  #bgCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .glass {
+    background: rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+  }
+
+  .fixed-announcement {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 90vw;
+    max-width: 350px;
+    padding: 20px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 50;
+  }
+
+  .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+  .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
+  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
+  .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
+  .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
+
+  /* Parallax wrapper */
+  .parallax {
+    transition: transform 0.1s ease-out;
+  }
+
+  img.logo {
+    max-width: 100%;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    display: block;
+    mx-auto;
+  }
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center justify-center p-4 text-slate-100">
+<body>
 
-  <!-- Anúncio fixo no canto esquerdo / responsivo -->
-  <section class="fixed-announcement glass">
-    <div class="emoji-top">⚡🤖</div>
-    <h2>Aviso sobre o NeuroScript</h2>
-    <p>
-      Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
-      O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
+<canvas id="bgCanvas"></canvas>
+
+<!-- Anúncio fixo -->
+<section class="fixed-announcement glass parallax">
+  <div class="emoji-top">⚡🤖</div>
+  <h2>Aviso sobre o NeuroScript</h2>
+  <p>
+    Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
+    O script está em desenvolvimento e pode apresentar alguns bugs.
+  </p>
+  <ul class="grid grid-cols-1 gap-1">
+    <li>🛠️ Estado: Em desenvolvimento</li>
+    <li>🐞 Bugs: Possíveis — reporte no suporte</li>
+    <li>🌱 Uso: Fase de teste, poucos usuários</li>
+    <li>✍️ Autor: Jhon</li>
+  </ul>
+  <button class="mt-4 w-full bg-gray-600 text-white rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
+    ☎ Suporte (Em desenvolvimento)
+  </button>
+</section>
+
+<main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0 parallax">
+  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
+
+    <!-- Logo -->
+    <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
+
+    <!-- Título -->
+    <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
+    <p class="text-slate-300 mb-6 text-sm md:text-base">
+      Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
     </p>
-    <ul class="grid grid-cols-1 gap-1">
-      <li>🛠️ Estado: Em desenvolvimento</li>
-      <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-      <li>🌱 Uso: Fase de teste, poucos usuários</li>
-      <li>✍️ Autor: Jhon</li>
-    </ul>
-    <button class="mt-4 w-full bg-gray-600 text-white rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
-      ☎ Suporte (Em desenvolvimento)
+
+    <!-- Botão seguro -->
+    <button id="getScriptBtn" class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
+      Obter Script
     </button>
+
+    <div class="mt-6 text-xs md:text-sm text-slate-400">
+      🔒 Link protegido — não é possível copiar diretamente
+    </div>
   </section>
+</main>
 
-  <!-- Parte principal centralizada -->
-  <main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0">
-    <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
+<footer class="mt-8 text-slate-500 text-xs md:text-sm">
+  © 2025 NeuroScript. Todos os direitos reservados.
+</footer>
 
-      <!-- Logo centralizada no topo -->
-      <img src="https://files.fm/f/du66392u3j" alt="NeuroScript Logo" class="mx-auto mb-6 rounded-lg w-32 md:w-48">
+<script>
+  // Botão
+  const getScriptBtn = document.getElementById('getScriptBtn');
+  getScriptBtn.addEventListener('click', () => {
+    const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
+    window.open(url, '_blank');
+  });
+  getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-      <!-- Título -->
-      <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
-      <p class="text-slate-300 mb-6 text-sm md:text-base">
-        Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
-      </p>
-
-      <!-- Botão seguro -->
-      <button id="getScriptBtn"
-              class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
-        Obter Script
-      </button>
-
-      <div class="mt-6 text-xs md:text-sm text-slate-400">
-        🔒 Link protegido — não é possível copiar diretamente
-      </div>
-    </section>
-  </main>
-
-  <!-- Rodapé -->
-  <footer class="mt-8 text-slate-500 text-xs md:text-sm">
-    © 2025 NeuroScript. Todos os direitos reservados.
-  </footer>
-
-  <script>
-    const getScriptBtn = document.getElementById('getScriptBtn');
-    getScriptBtn.addEventListener('click', () => {
-      const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
-      window.open(url, '_blank');
+  // --- Parallax efeito mouse ---
+  const parallaxElems = document.querySelectorAll('.parallax');
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 20; // ajuste intensidade
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    parallaxElems.forEach(el => {
+      el.style.transform = `translate(${x}px, ${y}px)`;
     });
-    getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
-  </script>
+  });
+
+  // --- Fundo tecnológico com partículas ---
+  const canvas = document.getElementById('bgCanvas');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = [];
+  const particleCount = 80;
+  class Particle {
+    constructor(){
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.radius = Math.random() * 2 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
+    }
+    update(){
+      this.x += this.speedX;
+      this.y += this.speedY;
+      if(this.x < 0) this.x = canvas.width;
+      if(this.x > canvas.width) this.x = 0;
+      if(this.y < 0) this.y = canvas.height;
+      if(this.y > canvas.height) this.y = 0;
+    }
+    draw(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(0,255,255,0.6)';
+      ctx.fill();
+    }
+  }
+
+  for(let i=0;i<particleCount;i++){
+    particles.push(new Particle());
+  }
+
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
+      p.update();
+      p.draw();
+    });
+    requestAnimationFrame(animate);
+  }
+  animate();
+
+  window.addEventListener('resize', ()=>{
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  });
+</script>
 
 </body>
 </html>
