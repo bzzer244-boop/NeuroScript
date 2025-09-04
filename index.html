@@ -33,6 +33,7 @@
     align-items: center;
   }
 
+  /* Fundo tecnológico */
   #bgCanvas {
     position: fixed;
     top: 0;
@@ -65,8 +66,11 @@
     }
   }
 
-  .fixed-announcement, .fixed-reviews, .fixed-pro {
+  /* Painéis */
+  .fixed-announcement {
     position: fixed;
+    top: 30px;
+    left: 30px;
     width: 360px;
     max-width: 95%;
     padding: 24px;
@@ -75,9 +79,29 @@
     text-align: center;
   }
 
-  .fixed-announcement { top: 30px; left: 30px; }
-  .fixed-reviews { bottom: 30px; left: 30px; }
-  .fixed-pro { top: 30px; right: 30px; }
+  .fixed-eval {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    width: 340px;
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 50;
+    text-align: left;
+  }
+
+  .fixed-pro {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 50;
+    text-align: center;
+  }
 
   main {
     width: 100%;
@@ -98,12 +122,43 @@
     transition: transform 0.15s ease-out;
   }
 
-  #copiedMessage {
-    display: none;
-    margin-top: 15px;
-    color: #00ffcc;
+  /* Botões padrão */
+  .btn {
+    display: inline-block;
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
     font-weight: bold;
-    text-shadow: 0 0 10px #00ffcc;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  }
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .btn-purple {
+    background: linear-gradient(to right, #9333ea, #7e22ce);
+    color: white;
+  }
+  .btn-purple:hover {
+    background: linear-gradient(to right, #7e22ce, #6b21a8);
+  }
+
+  .btn-yellow {
+    background: linear-gradient(to right, #facc15, #eab308);
+    color: black;
+  }
+  .btn-yellow:hover {
+    background: linear-gradient(to right, #eab308, #ca8a04);
+  }
+
+  .btn-gray {
+    background: linear-gradient(to right, #4b5563, #374151);
+    color: white;
+  }
+  .btn-gray:hover {
+    background: linear-gradient(to right, #374151, #1f2937);
   }
 </style>
 </head>
@@ -125,44 +180,45 @@
     <li>🌱 Uso: Fase de teste</li>
     <li>✍️ Autor: Jhon</li>
   </ul>
-  <button class="mt-5 w-full bg-gray-600 hover:bg-gray-700 text-white rounded-lg py-2 text-sm font-semibold shadow-md cursor-not-allowed opacity-80">
-    ☎ Suporte (Em desenvolvimento)
-  </button>
+  <button class="btn btn-gray mt-5">☎ Suporte (Em desenvolvimento)</button>
 </section>
 
-<!-- Painel Avaliações -->
-<section class="fixed-reviews glass parallax neon-glow">
+<!-- Painel avaliações -->
+<section class="fixed-eval glass parallax neon-glow">
   <h2 class="font-bold text-lg mb-3">⭐ Avaliações</h2>
-  <p id="reviewText" class="text-sm text-slate-300 italic"></p>
+  <div id="reviews" class="space-y-2 text-sm"></div>
 </section>
 
 <!-- Painel Pro -->
 <section class="fixed-pro glass parallax neon-glow">
   <h2 class="font-bold text-lg mb-3">🚀 Versão PRO</h2>
-  <button id="proBtn" 
-    class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 
-           text-white font-bold w-full py-3 rounded-xl shadow-lg transition transform hover:scale-105">
-    🔥 Obter Versão PRO
-  </button>
+  <p class="text-xs text-slate-300 mb-3 leading-relaxed">
+    Free: Teleporte pro brainrot, Fly, Personalizar Velocidade, Auto Collect.  
+    <br><br>
+    PRO: Tudo do Free + entrar em outros servidores e coletar brainrot automaticamente.  
+    <br><br>
+    Como ainda temos poucas pessoas usando, vou estar <strong>distribuindo a versão PRO para vocês!</strong>
+  </p>
+  <button id="proBtn" class="btn btn-yellow">🔥 Obter Versão PRO</button>
 </section>
 
 <!-- Menu central -->
 <main class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax neon-glow">
+  <!-- Logo -->
   <div class="flex justify-center mb-6">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="" class="logo">
   </div>
 
+  <!-- Título -->
   <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
   <p class="text-slate-300 mb-6 text-sm md:text-base">
-    Escolha abaixo a versão que deseja usar.
+    Clique no botão abaixo para copiar o script da versão Free.
   </p>
-
-  <!-- Botão Free -->
-  <button id="freeBtn" 
-          class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 px-8 rounded-2xl shadow-lg transition">
-    Versão Free
-  </button>
-  <div id="copiedMessage">✅ Script copiado com sucesso!</div>
+  <button id="getScriptBtn" class="btn btn-purple">Versão Free</button>
+  <div class="mt-6 text-xs md:text-sm text-slate-400">
+    🔒 Copiar direto — não é possível visualizar
+  </div>
+  <p id="copyMsg" class="hidden mt-4 text-green-400 font-semibold">✅ Script copiado com sucesso!</p>
 </main>
 
 <footer class="mt-8 text-slate-500 text-xs md:text-sm">
@@ -170,64 +226,40 @@
 </footer>
 
 <script>
-  // Botão Free -> copia código
-  const freeBtn = document.getElementById('freeBtn');
-  const copiedMessage = document.getElementById('copiedMessage');
-  freeBtn.addEventListener('click', () => {
-    const scriptCode = `loadstring(game:HttpGet("https://meusite.com/neuroscript-free"))()`;
-    navigator.clipboard.writeText(scriptCode).then(() => {
-      copiedMessage.style.display = 'block';
-      setTimeout(() => copiedMessage.style.display = 'none', 3000);
+  // Script Free que será copiado
+  const scriptFree = `print("NeuroScript Free Ativado!")`;
+
+  // Botão Free
+  const getScriptBtn = document.getElementById('getScriptBtn');
+  const copyMsg = document.getElementById('copyMsg');
+  getScriptBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(scriptFree).then(() => {
+      copyMsg.classList.remove('hidden');
+      setTimeout(() => copyMsg.classList.add('hidden'), 3000);
     });
   });
 
-  // Botão PRO -> abre link
-  document.getElementById('proBtn').addEventListener('click', () => {
+  // Botão PRO
+  const proBtn = document.getElementById('proBtn');
+  proBtn.addEventListener('click', () => {
     window.open("https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server", "_blank");
   });
 
   // Avaliações automáticas
-  const reviews = [
-    "🔥 Melhor script que já usei, super estável!", "⭐ Ótimo desempenho e muito fácil de usar.",
-    "🚀 Atualizações constantes, recomendo!", "💡 Simples, rápido e funcional.",
-    "✅ Nunca vi um suporte tão rápido assim!", "📌 Funciona em todos os jogos que testei.",
-    "⚡ Extremamente rápido e sem travamentos.", "🎯 Muito intuitivo e fácil de aprender.",
-    "🔒 Seguro e confiável, podem usar sem medo.", "🤖 Automação perfeita, ajuda demais!",
-    "✨ Interface bonita e organizada.", "💯 Melhor custo-benefício do mercado.",
-    "🎮 Experiência de jogo ficou incrível!", "🛠️ Equipe de suporte muito atenciosa.",
-    "📢 Sempre atualizado com novidades.", "🔥 Vale cada segundo, recomendo a todos.",
-    "💎 Um dos scripts mais completos que já vi.", "⚡ Desempenho impecável sem lag.",
-    "🎉 Uso diário e nunca tive problemas.", "🚀 Melhor escolha que fiz recentemente.",
-    "⭐ Estabilidade impressionante!", "📌 Muito útil em várias situações.",
-    "🔧 Configurações fáceis de ajustar.", "💡 Super recomendado para iniciantes.",
-    "🎯 Funcionalidades bem otimizadas.", "✅ Tudo funciona exatamente como prometido.",
-    "⚡ Surpreendeu minhas expectativas.", "📢 A comunidade em volta é muito ativa.",
-    "🎮 Torna a gameplay muito mais divertida.", "🔥 Sem dúvidas o melhor script do momento!"
+  const reviewsEl = document.getElementById("reviews");
+  const names = ["Lucas", "Mariana", "Pedro", "Ana", "Rafa", "Gabriel", "Sofia", "Thiago", "Beatriz", "João"];
+  const messages = [
+    "Script muito bom!", "Funciona perfeito!", "Recomendo demais!", "Valeu cada segundo!", "Top demais!", 
+    "Sem bugs até agora!", "Gostei bastante!", "Simples e eficiente!", "Faz o que promete!", "Ótimo desempenho!"
   ];
-
-  const users = [
-    "Lucas_Script","AnaDev","ProPlayer22","JoaozinFPS","MestreDoLua","ClaraMods","DarkHunterBR","JuliaCode",
-    "VipMaster77","RafaGameX","BrunoPlay","MarinaTech","PedroHackz","NathyScripts","LeoBRX","Xx_Gamer_xX",
-    "CodeMaster88","FabiMods","ThiagoPro","KellyLua","AndersonFPS","MariaTech","ZecaBR","GamerDoSul","CrisPlay",
-    "JoanaCodes","FelipeMods","Nerdzinho","LauraPlay","GuiLua","KauanGame","SofiaDev","EnzoScript","MikaPlay",
-    "PauloPro","Carolzinha","RickDev","BiancaFPS","OtavioLua","ManuGame","RobertoBR","LaraScripts","IgorPlay",
-    "IsabelaDev","CaioGamer","FernandaMods","HugoPlay","AliceBR","DiegoCode","CamilaTech","EduGamer","JulianaFPS",
-    "MateusMods","PatyDev","HenriqueLua","AlinePlay","ViniciusBR","HelenaCode","RafaelaScripts","DanielFPS",
-    "MarcelaPlay","VictorDev","BeatrizMods","SamuelLua","LuanaTech","DaviGamer","LarissaPlay","RodrigoFPS",
-    "VanessaDev","GustavoMods","PriscilaBR","LeonardoPlay","ThaisCode","RaphaelLua","NataliaTech","BrendaGamer",
-    "MauricioPro","KarenPlay","AndréFPS","PatriciaDev","LucianoMods","GabrielaBR","TiagoPlay","AmandaCode",
-    "FelixLua","MelissaTech","CesarFPS","JulioPlay","RuteDev","ClaudioMods","LeticiaBR","FernandoPlay","TatianeCode",
-    "RenatoLua","ElisaTech","MuriloFPS","YasminPlay","CristianoDev","CamiloMods","DayaneBR"
-  ];
-
-  const reviewText = document.getElementById('reviewText');
-  function changeReview(){
-    const randomReview = reviews[Math.floor(Math.random() * reviews.length)];
-    const randomUser = users[Math.floor(Math.random() * users.length)];
-    reviewText.textContent = `${randomUser}: ${randomReview}`;
+  function addReview(){
+    const name = names[Math.floor(Math.random()*names.length)];
+    const msg = messages[Math.floor(Math.random()*messages.length)];
+    const div = document.createElement("div");
+    div.textContent = `${name}: ${msg}`;
+    reviewsEl.prepend(div);
   }
-  changeReview();
-  setInterval(changeReview, 4000);
+  setInterval(addReview, 2000);
 
   // Parallax
   const parallaxElems = document.querySelectorAll('.parallax');
@@ -237,14 +269,13 @@
     parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
-  // Fundo animado
+  // Fundo partículas
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const particles = [];
   const particleCount = 80;
-
   class Particle {
     constructor(){
       this.x = Math.random() * canvas.width;
@@ -268,20 +299,13 @@
       ctx.fill();
     }
   }
-
   for(let i=0;i<particleCount;i++){ particles.push(new Particle()); }
-
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p=>{ p.update(); p.draw(); });
     requestAnimationFrame(animate);
   }
   animate();
-
-  window.addEventListener('resize', ()=>{
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  });
 </script>
 
 </body>
