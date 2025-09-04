@@ -45,6 +45,7 @@
     flex-direction: column;
     gap: 12px;
     z-index: 50;
+    text-align: center;
   }
   @media(min-width:768px){
     .fixed-announcement{
@@ -52,6 +53,7 @@
       top: 20px;
       left: 20px;
       transform: translateX(0);
+      text-align: left;
     }
   }
 
@@ -61,10 +63,8 @@
   .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
   .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
 
-  .parallax { transition: transform 0.1s ease-out; }
-
   img.logo {
-    max-width: 100%;
+    max-width: 200px;
     border-radius: 12px;
     margin-bottom: 20px;
   }
@@ -75,7 +75,7 @@
 <canvas id="bgCanvas"></canvas>
 
 <!-- Painel de anúncio -->
-<section class="fixed-announcement glass parallax">
+<section class="fixed-announcement glass">
   <div class="emoji-top">⚡🤖</div>
   <h2>Aviso sobre o NeuroScript</h2>
   <p>
@@ -94,7 +94,7 @@
 </section>
 
 <!-- Parte principal -->
-<main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0 parallax">
+<main class="w-full max-w-3xl mx-auto mt-20 px-4 md:px-0 text-center">
   <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
 
     <!-- Logo -->
@@ -117,7 +117,7 @@
   </section>
 </main>
 
-<footer class="mt-8 text-slate-500 text-xs md:text-sm">
+<footer class="mt-8 text-slate-500 text-xs md:text-sm text-center">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
@@ -129,14 +129,6 @@
     window.open(url, '_blank');
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
-
-  // Parallax com mouse
-  const parallaxElems = document.querySelectorAll('.parallax');
-  document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
-  });
 
   // Fundo tecnológico com partículas
   const canvas = document.getElementById('bgCanvas');
@@ -188,6 +180,15 @@
   window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+  });
+
+  // Parallax leve (opcional)
+  document.addEventListener('mousemove', e => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 5;
+    const y = (e.clientY / window.innerHeight - 0.5) * 5;
+    // Aplica apenas em elementos decorativos ou fundo
+    // Aqui mantemos leve, não desloca main nem painel
+    canvas.style.transform = `translate(${x}px, ${y}px)`;
   });
 </script>
 
