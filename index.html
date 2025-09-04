@@ -23,35 +23,39 @@
       z-index: 50; 
       display: flex;
       flex-direction: column;
-      justify-content: center; /* Centraliza verticalmente */
-      padding: 30px; /* Mais espaço interno */
+      justify-content: flex-start; /* Começa do topo */
+      padding: 20px; /* Espaço interno menor */
       border-radius: 24px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.5);
       border: 1px solid rgba(255,255,255,0.05);
     }
     button { cursor: pointer; }
     img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; }
-    .emoji-top { font-size: 3rem; text-align: center; margin-bottom: 10px; }
+    .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+    .fixed-announcement h2 { font-size: 1.2rem; margin-bottom: 8px; }
+    .fixed-announcement p { font-size: 0.9rem; line-height: 1.4; }
+    .fixed-announcement ul li { font-size: 0.8rem; }
+    .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
   </style>
 </head>
 <body class="min-h-screen flex flex-col items-center justify-center p-6 text-slate-100">
 
   <!-- Anúncio fixo no canto esquerdo -->
   <section class="fixed-announcement glass">
-    <div class="flex flex-col gap-3 items-center text-center">
+    <div class="flex flex-col gap-2 items-center text-center">
       <div class="emoji-top">⚡🤖</div>
-      <h2 class="text-lg font-bold">Aviso sobre o NeuroScript</h2>
-      <p class="text-slate-300 text-sm leading-relaxed">
+      <h2>Aviso sobre o NeuroScript</h2>
+      <p>
         Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
         O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
       </p>
-      <ul class="mt-2 text-xs grid grid-cols-1 gap-1">
+      <ul class="mt-2 grid grid-cols-1 gap-1">
         <li>🛠️ Estado: Em desenvolvimento</li>
         <li>🐞 Bugs: Possíveis — reporte no suporte</li>
         <li>🌱 Uso: Fase de teste, poucos usuários</li>
         <li>✍️ Autor: Jhon</li>
       </ul>
-      <button class="mt-4 w-full bg-gray-600 text-white py-2 rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
+      <button class="mt-4 w-full bg-gray-600 text-white rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
         ☎ Suporte (Em desenvolvimento)
       </button>
     </div>
@@ -87,12 +91,10 @@
     const getScriptBtn = document.getElementById('getScriptBtn');
 
     getScriptBtn.addEventListener('click', () => {
-      // Coloque aqui o link real do script
       const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
       window.open(url, '_blank'); // Abre em nova aba
     });
 
-    // Evita tooltip com URL ao passar o mouse
     getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
   </script>
 
