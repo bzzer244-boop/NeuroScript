@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NeuroScript — Obter Script</title>
 
-<!-- Open Graph (WhatsApp, Facebook, Discord, etc) -->
+<!-- Open Graph -->
 <meta property="og:title" content="NeuroScript — Obter Script">
 <meta property="og:description" content="Script em desenvolvimento, confira aqui!">
 <meta property="og:image" content="https://bzzer244-boop.github.io/NeuroScript/Desemvolviment.png">
@@ -33,7 +33,6 @@
     align-items: center;
   }
 
-  /* Fundo tecnológico */
   #bgCanvas {
     position: fixed;
     top: 0;
@@ -48,7 +47,6 @@
     backdrop-filter: blur(8px);
   }
 
-  /* Neon Glow Animado (suavizado) */
   .neon-glow {
     border: 1px solid rgba(0, 255, 255, 0.3);
     animation: neonPulse 3s infinite alternate;
@@ -69,7 +67,6 @@
     }
   }
 
-  /* Painel anúncio no canto */
   .fixed-announcement {
     position: fixed;
     top: 30px;
@@ -82,7 +79,6 @@
     text-align: center;
   }
 
-  /* Menu central */
   main {
     width: 100%;
     max-width: 600px;
@@ -101,13 +97,57 @@
   .parallax {
     transition: transform 0.15s ease-out;
   }
+
+  /* Avaliações */
+  .reviews-box {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 280px;
+    max-width: 90%;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    z-index: 50;
+  }
+
+  /* Versão PRO */
+  .pro-box {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 280px;
+    max-width: 90%;
+    padding: 16px;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    z-index: 50;
+    text-align: center;
+  }
+
+  /* Mensagem de cópia */
+  #copyMessage {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,255,200,0.1);
+    border: 1px solid rgba(0,255,200,0.4);
+    padding: 12px 20px;
+    border-radius: 12px;
+    color: #0ff;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out;
+    z-index: 100;
+  }
 </style>
 </head>
 <body>
 
 <canvas id="bgCanvas"></canvas>
 
-<!-- Painel de anúncio no canto -->
+<!-- Painel de anúncio -->
 <section class="fixed-announcement glass parallax neon-glow">
   <div class="text-4xl mb-3">⚡🤖</div>
   <h2 class="font-bold text-xl mb-2">Aviso sobre o NeuroScript</h2>
@@ -115,50 +155,84 @@
     Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
     O script está em desenvolvimento e pode apresentar alguns bugs.
   </p>
-  <ul class="mt-4 text-sm space-y-1">
-    <li>🛠️ Estado: Em desenvolvimento</li>
-    <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-    <li>🌱 Uso: Fase de teste</li>
-    <li>✍️ Autor: Jhon</li>
-  </ul>
-  <button class="mt-5 w-full bg-gray-600 hover:bg-gray-700 text-white rounded-lg py-2 text-sm font-semibold shadow-md cursor-not-allowed opacity-80">
-    ☎ Suporte (Em desenvolvimento)
-  </button>
 </section>
+
+<!-- Avaliações -->
+<div class="reviews-box glass neon-glow parallax">
+  <h3 class="font-bold text-lg mb-2">📢 Avaliações</h3>
+  <p id="reviewText">Carregando avaliações...</p>
+</div>
+
+<!-- Versão PRO -->
+<div class="pro-box glass neon-glow parallax">
+  <h3 class="font-bold text-lg mb-2">⭐ Obter Versão PRO</h3>
+  <button id="getProBtn" 
+    class="bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2 px-6 rounded-lg shadow-md transition">
+    Acessar Versão PRO
+  </button>
+</div>
 
 <!-- Menu central -->
 <main class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax neon-glow">
-  <!-- Logo no topo -->
   <div class="flex justify-center mb-6">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="" class="logo">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="Logo NeuroScript" class="logo">
   </div>
 
-  <!-- Título -->
   <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
   <p class="text-slate-300 mb-6 text-sm md:text-base">
-    Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
+    Escolha sua versão abaixo.
   </p>
-  <button id="getScriptBtn" 
+
+  <!-- Versão Free -->
+  <button id="getFreeBtn" 
           class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 px-8 rounded-2xl shadow-lg transition">
-    Obter Script
+    Versão Free
   </button>
+
   <div class="mt-6 text-xs md:text-sm text-slate-400">
-    🔒 Link protegido — não é possível copiar diretamente
+    🔒 Link protegido — cópia direta bloqueada
   </div>
 </main>
+
+<!-- Mensagem de cópia -->
+<div id="copyMessage">✅ Script copiado com sucesso!</div>
 
 <footer class="mt-8 text-slate-500 text-xs md:text-sm">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
 <script>
-  // Botão script
-  const getScriptBtn = document.getElementById('getScriptBtn');
-  getScriptBtn.addEventListener('click', () => {
-    const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
-    window.open(url, '_blank');
+  // Avaliações automáticas
+  const reviews = [
+    "🔥 Melhor script que já usei, super estável!",
+    "⭐ Ótimo desempenho e muito fácil de usar.",
+    "🚀 Atualizações constantes, recomendo!",
+    "💡 Simples, rápido e funcional.",
+    "✅ Nunca vi um suporte tão rápido assim!"
+  ];
+  const reviewText = document.getElementById('reviewText');
+  function changeReview(){
+    const random = Math.floor(Math.random() * reviews.length);
+    reviewText.textContent = reviews[random];
+  }
+  changeReview();
+  setInterval(changeReview, 4000);
+
+  // Botão versão PRO
+  document.getElementById('getProBtn').addEventListener('click', () => {
+    window.open("https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server", "_blank");
   });
-  getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
+
+  // Botão versão Free
+  const getFreeBtn = document.getElementById('getFreeBtn');
+  const copyMessage = document.getElementById('copyMessage');
+  getFreeBtn.addEventListener('click', () => {
+    const scriptCode = `print("NeuroScript Free ativado!")`; // <-- coloque aqui seu script real
+    navigator.clipboard.writeText(scriptCode).then(() => {
+      copyMessage.style.opacity = 1;
+      setTimeout(() => copyMessage.style.opacity = 0, 2000);
+    });
+  });
 
   // Parallax
   const parallaxElems = document.querySelectorAll('.parallax');
@@ -168,7 +242,7 @@
     parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
-  // Fundo tecnológico
+  // Fundo animado
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
