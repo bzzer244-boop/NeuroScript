@@ -6,42 +6,52 @@
   <title>NeuroScript — Obter Script</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background: linear-gradient(180deg,#0f172a 0%, #020617 100%); font-family: sans-serif; }
-    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
-    .fixed-announcement { position: fixed; top: 20px; left: 20px; width: 300px; z-index: 50; }
+    body { 
+      background: linear-gradient(180deg,#0f172a 0%, #020617 100%); 
+      font-family: sans-serif; 
+    }
+    .glass { 
+      background: rgba(255,255,255,0.03); 
+      backdrop-filter: blur(6px); 
+    }
+    .fixed-announcement { 
+      position: fixed; 
+      top: 20px; 
+      left: 20px; 
+      width: 320px; 
+      z-index: 50; 
+    }
     button { cursor: pointer; }
     img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; }
   </style>
 </head>
-<body class="min-h-screen flex items-center justify-center p-6 text-slate-100">
+<body class="min-h-screen flex flex-col items-center justify-center p-6 text-slate-100">
 
-  <!-- Anúncio fixo no canto esquerdo -->
-  <section class="fixed-announcement glass rounded-2xl p-4 shadow-2xl border border-white/5">
-    <div class="flex items-start gap-3">
-      <div class="text-3xl">⚡🤖</div>
-      <div>
+  <!-- Anúncio fixo no canto esquerdo (maior) -->
+  <section class="fixed-announcement glass rounded-2xl p-6 shadow-2xl border border-white/5">
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center gap-3">
+        <div class="text-4xl">⚡🤖</div>
         <h2 class="text-lg font-bold">Aviso sobre o NeuroScript</h2>
-        <p class="text-slate-300 text-sm leading-relaxed mt-1">
-          Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
-          O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
-        </p>
-        <ul class="mt-2 text-xs grid grid-cols-1 gap-1">
-          <li>🛠️ Estado: Em desenvolvimento</li>
-          <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-          <li>🌱 Uso: Fase de teste, poucos usuários</li>
-          <li>✍️ Autor: Jhon</li>
-        </ul>
-
-        <!-- Botão de suporte em desenvolvimento -->
-        <button class="mt-4 w-full bg-gray-600 text-white py-2 rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
-          ☎ Suporte (Em desenvolvimento)
-        </button>
       </div>
+      <p class="text-slate-300 text-sm leading-relaxed">
+        Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
+        O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
+      </p>
+      <ul class="mt-2 text-xs grid grid-cols-1 gap-1">
+        <li>🛠️ Estado: Em desenvolvimento</li>
+        <li>🐞 Bugs: Possíveis — reporte no suporte</li>
+        <li>🌱 Uso: Fase de teste, poucos usuários</li>
+        <li>✍️ Autor: Jhon</li>
+      </ul>
+      <button class="mt-4 w-full bg-gray-600 text-white py-2 rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
+        ☎ Suporte (Em desenvolvimento)
+      </button>
     </div>
   </section>
 
   <!-- Parte principal centralizada -->
-  <main class="max-w-3xl w-full text-center">
+  <main class="max-w-3xl w-full text-center mt-20">
     <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
       <!-- Imagem no topo -->
       <img src="https://files.fm/f/du66392u3j" alt="NeuroScript Logo">
@@ -59,12 +69,12 @@
         🔒 Link protegido — não é possível copiar diretamente
       </div>
     </section>
-
-    <!-- Footer -->
-    <footer class="mt-6 text-center text-slate-500 text-sm">
-      © 2025 NeuroScript. Todos os direitos reservados.
-    </footer>
   </main>
+
+  <!-- Rodapé -->
+  <footer class="mt-8 text-slate-500 text-sm">
+    © 2025 NeuroScript. Todos os direitos reservados.
+  </footer>
 
   <script>
     const getScriptBtn = document.getElementById('getScriptBtn');
