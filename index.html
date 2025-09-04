@@ -72,7 +72,7 @@
     top: 30px;
     left: 30px;
     width: 400px;
-    padding: 24px;
+    padding: 28px;
     border-radius: 24px;
     z-index: 50;
     text-align: center;
@@ -85,7 +85,7 @@
     width: 360px;
     max-height: 500px;
     overflow-y: auto;
-    padding: 20px;
+    padding: 24px;
     border-radius: 20px;
     z-index: 50;
     text-align: left;
@@ -136,12 +136,13 @@
     transform: scale(1.05);
   }
 
-  .btn-purple {
-    background: linear-gradient(to right, #9333ea, #7e22ce);
+  /* Cores vibrantes */
+  .btn-green {
+    background: linear-gradient(to right, #22c55e, #16a34a);
     color: white;
   }
-  .btn-purple:hover {
-    background: linear-gradient(to right, #7e22ce, #6b21a8);
+  .btn-green:hover {
+    background: linear-gradient(to right, #16a34a, #15803d);
   }
 
   .btn-yellow {
@@ -152,18 +153,18 @@
     background: linear-gradient(to right, #eab308, #ca8a04);
   }
 
-  .btn-gray {
-    background: linear-gradient(to right, #4b5563, #374151);
+  .btn-red {
+    background: linear-gradient(to right, #ef4444, #dc2626);
     color: white;
-    cursor: not-allowed;
     opacity: 0.7;
+    cursor: not-allowed;
   }
 
   .btn-blue {
-    background: linear-gradient(to right, #3b82f6, #1d4ed8);
+    background: linear-gradient(to right, #3b82f6, #2563eb);
     color: white;
-    cursor: not-allowed;
     opacity: 0.7;
+    cursor: not-allowed;
   }
 </style>
 </head>
@@ -185,22 +186,17 @@
     <li>🌱 Uso: Fase de teste</li>
     <li>✍️ Autor: Jhon</li>
   </ul>
-  <button class="btn btn-gray mt-5">☎️ Suporte (Em desenvolvimento)</button>
+  <button class="btn btn-red mt-5">☎️ Suporte (Em desenvolvimento)</button>
 
-  <!-- Menu Avaliação -->
-  <div class="mt-5">
-    <p class="text-sm leading-relaxed mb-3">
-      ⭐ Avalie aqui se você gostar do nosso script!  
-      Assim podemos saber se nosso trabalho está eficiente, com bom resultado,  
-      e podemos continuar trazendo atualizações regularmente.
-    </p>
-    <button class="btn btn-blue">⭐ Avalie Aqui (Em manutenção)</button>
+  <div class="mt-6 text-sm leading-relaxed">
+    ⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente, com bom resultado, e podemos continuar trazendo atualizações regularmente.
   </div>
+  <button class="btn btn-blue mt-4">⭐ Avalie Aqui (Em manutenção)</button>
 </section>
 
 <!-- Painel avaliações -->
 <section class="fixed-eval glass parallax neon-glow">
-  <h2 class="font-bold text-lg mb-3">⭐ Todas as Avaliações Nossas</h2>
+  <h2 class="font-bold text-lg mb-3">📢 Todas as Avaliações Nossas</h2>
   <div id="reviews" class="space-y-2 text-sm"></div>
 </section>
 
@@ -208,11 +204,11 @@
 <section class="fixed-pro glass parallax neon-glow">
   <h2 class="font-bold text-lg mb-3">🚀 Versão PRO</h2>
   <p class="text-xs text-slate-300 mb-3 leading-relaxed">
-    🟣 Free: Teleporte pro brainrot, ✈️ Fly, ⚡ Personalizar Velocidade, 🤖 Auto Collect.  
+    🟢 <strong>Free:</strong> Teleporte pro brainrot, ✈️ Fly, ⚡ Personalizar Velocidade, 🎯 Auto Collect.  
     <br><br>
-    🟡 PRO: Tudo do Free + 🌍 entrar em outros servidores e coletar brainrot automaticamente.  
+    🟡 <strong>PRO:</strong> Tudo do Free + 🌍 entrar em outros servidores e 🤖 coletar brainrot automaticamente.  
     <br><br>
-    🎁 Como ainda temos poucas pessoas usando, vou estar <strong>distribuindo a versão PRO para vocês!</strong>
+    Como ainda temos poucas pessoas usando, vou estar <strong>🎁 distribuindo a versão PRO para vocês!</strong>
   </p>
   <button id="proBtn" class="btn btn-yellow">🚀🔥 Obter Versão PRO</button>
 </section>
@@ -229,7 +225,7 @@
   <p class="text-slate-300 mb-6 text-sm md:text-base">
     Clique no botão abaixo para copiar o script da versão Free.
   </p>
-  <button id="getScriptBtn" class="btn btn-purple">🟣✨ Obter Versão Free</button>
+  <button id="getScriptBtn" class="btn btn-green">🟢✨ Obter Versão Free</button>
   <div class="mt-6 text-xs md:text-sm text-slate-400">
     🔒 Copiar direto — não é possível visualizar
   </div>
@@ -290,14 +286,15 @@
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   const particles = [];
-  const particleCount = 80;
+  const particleCount = 100;
   class Particle {
     constructor(){
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
       this.radius = Math.random() * 2 + 1;
-      this.speedX = (Math.random() - 0.5) * 0.3;
-      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.color = `hsl(${Math.random() * 360}, 100%, 50%)`; // cores vivas 🌈
     }
     update(){
       this.x += this.speedX;
@@ -310,7 +307,7 @@
     draw(){
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(0,255,255,0.6)';
+      ctx.fillStyle = this.color;
       ctx.fill();
     }
   }
