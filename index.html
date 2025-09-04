@@ -155,7 +155,7 @@
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-  // Parallax leve para toda a seção
+  // Parallax leve
   const parallaxSection = document.querySelector('.parallax-section');
   document.addEventListener('mousemove', e => {
     const x = (e.clientX / window.innerWidth - 0.5) * 10;
@@ -163,23 +163,22 @@
     parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // Fundo tecnológico com partículas e linhas conectadas
+  // Fundo tecnológico com bolinhas azuis
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   const particles = [];
-  const particleCount = 100;
-  const maxDistance = 120;
+  const particleCount = 80;
 
   class Particle {
     constructor(){
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
       this.radius = Math.random() * 2 + 1;
-      this.speedX = (Math.random() - 0.5) * 0.4;
-      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
     }
     update(){
       this.x += this.speedX;
@@ -192,31 +191,13 @@
     draw(){
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-      ctx.fillStyle = 'rgba(0,255,255,0.6)';
+      ctx.fillStyle = 'rgba(0, 150, 255, 0.6)'; // bolinhas azuis
       ctx.fill();
     }
   }
 
-  for(let i=0;i<particleCount;i++){
+  for(let i=0; i<particleCount; i++){
     particles.push(new Particle());
-  }
-
-  function drawLines(){
-    for(let i=0;i<particleCount;i++){
-      for(let j=i+1;j<particleCount;j++){
-        let dx = particles[i].x - particles[j].x;
-        let dy = particles[i].y - particles[j].y;
-        let dist = Math.sqrt(dx*dx + dy*dy);
-        if(dist < maxDistance){
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,255,255,${1 - dist/maxDistance})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(particles[i].x, particles[i].y);
-          ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.stroke();
-        }
-      }
-    }
   }
 
   function animate(){
@@ -225,9 +206,9 @@
       p.update();
       p.draw();
     });
-    drawLines();
     requestAnimationFrame(animate);
   }
+
   animate();
 
   window.addEventListener('resize', ()=>{
