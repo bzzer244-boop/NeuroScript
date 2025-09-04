@@ -6,21 +6,12 @@
 <title>NeuroScript — Obter Script</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
-  html, body {
+  body {
     margin: 0;
-    padding: 0;
-    height: 100%;
     font-family: sans-serif;
+    overflow-x: hidden;
     background: #020617;
     color: #f0f0f0;
-    overflow-x: hidden;
-  }
-
-  body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 
   /* Fundo tecnológico */
@@ -31,7 +22,6 @@
     width: 100%;
     height: 100%;
     z-index: -1;
-    background: #020617;
   }
 
   .glass {
@@ -39,10 +29,10 @@
     backdrop-filter: blur(6px);
   }
 
-  /* Painel anúncio */
+  /* Painel anúncio responsivo */
   .fixed-announcement {
     position: absolute;
-    top: 1.5rem;
+    top: 1.5rem; 
     left: 50%;
     transform: translateX(-50%);
     width: 90%;
@@ -55,50 +45,28 @@
     flex-direction: column;
     gap: 12px;
     z-index: 50;
-    text-align: center;
   }
-
   @media(min-width:768px){
     .fixed-announcement{
       position: fixed;
       top: 20px;
       left: 20px;
       transform: translateX(0);
-      text-align: left;
     }
   }
 
-  .emoji-top { font-size: 2.5rem; margin-bottom: 8px; }
-  .fixed-announcement h2 { font-size: 1.2rem; }
-  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; }
-  .fixed-announcement ul li { font-size: 0.85rem; }
+  .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+  .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
+  .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
+  .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
   .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
 
+  .parallax { transition: transform 0.1s ease-out; }
+
   img.logo {
-    max-width: 200px;
+    max-width: 100%;
     border-radius: 12px;
     margin-bottom: 20px;
-  }
-
-  main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    flex: 1;
-  }
-
-  .parallax-section {
-    text-align: center;
-    transition: transform 0.1s ease-out;
-  }
-
-  footer {
-    text-align: center;
-    margin-top: auto;
-    padding: 10px 0;
-    font-size: 0.85rem;
-    color: #999;
   }
 </style>
 </head>
@@ -107,7 +75,7 @@
 <canvas id="bgCanvas"></canvas>
 
 <!-- Painel de anúncio -->
-<section class="fixed-announcement glass">
+<section class="fixed-announcement glass parallax">
   <div class="emoji-top">⚡🤖</div>
   <h2>Aviso sobre o NeuroScript</h2>
   <p>
@@ -126,16 +94,19 @@
 </section>
 
 <!-- Parte principal -->
-<main>
-  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax-section">
+<main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0 parallax">
+  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
 
+    <!-- Logo -->
     <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
 
+    <!-- Título -->
     <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
     <p class="text-slate-300 mb-6 text-sm md:text-base">
       Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
     </p>
 
+    <!-- Botão seguro -->
     <button id="getScriptBtn" class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
       Obter Script
     </button>
@@ -146,7 +117,7 @@
   </section>
 </main>
 
-<footer>
+<footer class="mt-8 text-slate-500 text-xs md:text-sm">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
@@ -159,12 +130,12 @@
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-  // Parallax leve no conteúdo principal
-  const parallaxSection = document.querySelector('.parallax-section');
+  // Parallax com mouse
+  const parallaxElems = document.querySelectorAll('.parallax');
   document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 15;
-    const y = (e.clientY / window.innerHeight - 0.5) * 15;
-    parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
+    const y = (e.clientY / window.innerHeight - 0.5) * 20;
+    parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
   // Fundo tecnológico com partículas
@@ -174,48 +145,47 @@
   canvas.height = window.innerHeight;
 
   const particles = [];
-  const particleCount = 100;
+  const particleCount = 80;
 
   class Particle {
-    constructor() {
+    constructor(){
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 2 + 1.2;
-      this.speedX = (Math.random() - 0.5) * 0.4;
-      this.speedY = (Math.random() - 0.5) * 0.4;
+      this.radius = Math.random() * 2 + 1;
+      this.speedX = (Math.random() - 0.5) * 0.3;
+      this.speedY = (Math.random() - 0.5) * 0.3;
     }
-    update() {
+    update(){
       this.x += this.speedX;
       this.y += this.speedY;
-      if (this.x < 0) this.x = canvas.width;
-      if (this.x > canvas.width) this.x = 0;
-      if (this.y < 0) this.y = canvas.height;
-      if (this.y > canvas.height) this.y = 0;
+      if(this.x < 0) this.x = canvas.width;
+      if(this.x > canvas.width) this.x = 0;
+      if(this.y < 0) this.y = canvas.height;
+      if(this.y > canvas.height) this.y = 0;
     }
-    draw() {
+    draw(){
       ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 200, 255, 0.7)';
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(0,255,255,0.6)';
       ctx.fill();
     }
   }
 
-  for (let i = 0; i < particleCount; i++) {
+  for(let i=0;i<particleCount;i++){
     particles.push(new Particle());
   }
 
-  function animate() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    particles.forEach(p => {
+  function animate(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles.forEach(p=>{
       p.update();
       p.draw();
     });
     requestAnimationFrame(animate);
   }
-
   animate();
 
-  window.addEventListener('resize', () => {
+  window.addEventListener('resize', ()=>{
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   });
