@@ -29,11 +29,13 @@
     backdrop-filter: blur(6px);
   }
 
+  /* Painel anúncio responsivo */
   .fixed-announcement {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    width: 90vw;
+    position: absolute;
+    top: 1.5rem; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
     max-width: 350px;
     padding: 20px;
     border-radius: 24px;
@@ -44,6 +46,14 @@
     gap: 12px;
     z-index: 50;
   }
+  @media(min-width:768px){
+    .fixed-announcement{
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      transform: translateX(0);
+    }
+  }
 
   .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
   .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
@@ -51,17 +61,12 @@
   .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
   .fixed-announcement button { font-size: 0.9rem; padding: 8px; }
 
-  /* Parallax wrapper */
-  .parallax {
-    transition: transform 0.1s ease-out;
-  }
+  .parallax { transition: transform 0.1s ease-out; }
 
   img.logo {
     max-width: 100%;
     border-radius: 12px;
     margin-bottom: 20px;
-    display: block;
-    mx-auto;
   }
 </style>
 </head>
@@ -69,7 +74,7 @@
 
 <canvas id="bgCanvas"></canvas>
 
-<!-- Anúncio fixo -->
+<!-- Painel de anúncio -->
 <section class="fixed-announcement glass parallax">
   <div class="emoji-top">⚡🤖</div>
   <h2>Aviso sobre o NeuroScript</h2>
@@ -88,6 +93,7 @@
   </button>
 </section>
 
+<!-- Parte principal -->
 <main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0 parallax">
   <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
 
@@ -124,17 +130,15 @@
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-  // --- Parallax efeito mouse ---
+  // Parallax com mouse
   const parallaxElems = document.querySelectorAll('.parallax');
   document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20; // ajuste intensidade
+    const x = (e.clientX / window.innerWidth - 0.5) * 20;
     const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    parallaxElems.forEach(el => {
-      el.style.transform = `translate(${x}px, ${y}px)`;
-    });
+    parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
-  // --- Fundo tecnológico com partículas ---
+  // Fundo tecnológico com partículas
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
@@ -142,6 +146,7 @@
 
   const particles = [];
   const particleCount = 80;
+
   class Particle {
     constructor(){
       this.x = Math.random() * canvas.width;
