@@ -23,6 +23,7 @@
     align-items: center;
   }
 
+  /* Fundo tecnológico */
   #bgCanvas {
     position: fixed;
     top: 0;
@@ -38,6 +39,7 @@
     backdrop-filter: blur(6px);
   }
 
+  /* Painel anúncio */
   .fixed-announcement {
     position: absolute;
     top: 1.5rem;
@@ -88,6 +90,7 @@
 
   .parallax-section {
     text-align: center;
+    transition: transform 0.1s ease-out;
   }
 
   footer {
@@ -156,30 +159,30 @@
   });
   getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
 
-  // Parallax leve
+  // Parallax leve no conteúdo principal
   const parallaxSection = document.querySelector('.parallax-section');
   document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 10;
-    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+    const x = (e.clientX / window.innerWidth - 0.5) * 15;
+    const y = (e.clientY / window.innerHeight - 0.5) * 15;
     parallaxSection.style.transform = `translate(${x}px, ${y}px)`;
   });
 
-  // Fundo tecnológico: partículas azuis flutuantes
+  // Fundo tecnológico com partículas
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 
   const particles = [];
-  const particleCount = 80;
+  const particleCount = 100;
 
   class Particle {
     constructor() {
       this.x = Math.random() * canvas.width;
       this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 2 + 1.5;
-      this.speedX = (Math.random() - 0.5) * 0.3;
-      this.speedY = (Math.random() - 0.5) * 0.3;
+      this.radius = Math.random() * 2 + 1.2;
+      this.speedX = (Math.random() - 0.5) * 0.4;
+      this.speedY = (Math.random() - 0.5) * 0.4;
     }
     update() {
       this.x += this.speedX;
@@ -192,7 +195,7 @@
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(0, 150, 255, 0.7)';
+      ctx.fillStyle = 'rgba(0, 200, 255, 0.7)';
       ctx.fill();
     }
   }
