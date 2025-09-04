@@ -3,16 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Obter Script</title>
+  <title>NeuroScript — Obter Script</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { background: linear-gradient(180deg,#0f172a 0%, #020617 100%); font-family: sans-serif; }
+    .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
+    .fixed-announcement { position: fixed; top: 20px; left: 20px; width: 300px; z-index: 50; }
+    button { cursor: pointer; }
+  </style>
 </head>
-<body class="bg-gradient-to-b from-gray-900 to-black flex items-center justify-center min-h-screen">
+<body class="min-h-screen flex items-center justify-center p-6 text-slate-100">
 
-  <!-- Botão principal -->
-  <button onclick="window.location.href='https://exemplo.com'" 
-          class="bg-purple-600 hover:bg-purple-700 text-white text-xl font-bold py-4 px-10 rounded-2xl shadow-lg transition">
-    Obter Script
-  </button>
+  <!-- Anúncio fixo no canto esquerdo -->
+  <section class="fixed-announcement glass rounded-2xl p-4 shadow-2xl border border-white/5">
+    <div class="flex items-start gap-3">
+      <div class="text-3xl">⚡🤖</div>
+      <div>
+        <h2 class="text-lg font-bold">Aviso sobre o NeuroScript</h2>
+        <p class="text-slate-300 text-sm leading-relaxed mt-1">
+          Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! 
+          O script está em desenvolvimento e pode apresentar alguns bugs. Poucas pessoas estão usando no momento.
+        </p>
+        <ul class="mt-2 text-xs grid grid-cols-1 gap-1">
+          <li>🛠️ Estado: Em desenvolvimento</li>
+          <li>🐞 Bugs: Possíveis — reporte no suporte</li>
+          <li>🌱 Uso: Fase de teste, poucos usuários</li>
+          <li>✍️ Autor: Jhon</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Botão principal centralizado -->
+  <main class="max-w-3xl w-full text-center">
+    <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
+      <h1 class="text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
+      <p class="text-slate-300 mb-6">Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.</p>
+
+      <button id="getScriptBtn"
+              class="bg-purple-600 hover:bg-purple-700 text-white text-xl font-bold py-4 px-10 rounded-2xl shadow-lg transition">
+        Obter Script
+      </button>
+
+      <div class="mt-6 text-sm text-slate-400">
+        🔒 Link protegido — não é possível copiar diretamente
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const getScriptBtn = document.getElementById('getScriptBtn');
+
+    getScriptBtn.addEventListener('click', () => {
+      // Coloque aqui o link real do script
+      const url = 'https://exemplo.com';
+      window.open(url, '_blank'); // Abre em nova aba
+    });
+
+    // Evita tooltip com URL ao passar o mouse
+    getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
+  </script>
 
 </body>
 </html>
