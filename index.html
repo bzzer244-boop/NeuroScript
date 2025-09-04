@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroScript — Obter Script</title>
+<title>NeuroScript — Aviso</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
   body {
@@ -29,14 +29,13 @@
     backdrop-filter: blur(6px);
   }
 
-  /* Painel anúncio responsivo */
+  /* Painel anúncio sempre no canto */
   .fixed-announcement {
-    position: absolute;
-    top: 1.5rem; 
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 350px;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 280px;
+    max-width: 90%;
     padding: 20px;
     border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
@@ -46,16 +45,8 @@
     gap: 12px;
     z-index: 50;
   }
-  @media(min-width:768px){
-    .fixed-announcement{
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      transform: translateX(0);
-    }
-  }
 
-  .emoji-top { font-size: 2.5rem; text-align: center; margin-bottom: 8px; }
+  .emoji-top { font-size: 2rem; text-align: center; margin-bottom: 8px; }
   .fixed-announcement h2 { font-size: 1.2rem; text-align: center; }
   .fixed-announcement p { font-size: 0.95rem; line-height: 1.4; text-align: center; }
   .fixed-announcement ul li { font-size: 0.85rem; text-align: center; }
@@ -63,11 +54,12 @@
 
   .parallax { transition: transform 0.1s ease-out; }
 
-  img.logo {
-    max-width: 100%;
-    border-radius: 12px;
-    margin-bottom: 20px;
+  /* Dá espaço para o conteúdo principal não colidir com o menu fixo */
+  main {
+    margin-left: 320px; /* distância suficiente do painel */
+    padding: 40px 20px;
   }
+
 </style>
 </head>
 <body>
@@ -93,43 +85,21 @@
   </button>
 </section>
 
-<!-- Parte principal -->
-<main class="w-full max-w-3xl text-center mt-20 px-4 md:px-0 parallax">
-  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
-
-    <!-- Logo -->
-    <img src="LINK_DA_SUA_IMAGEM_AQUI" alt="NeuroScript Logo" class="logo mx-auto mb-6">
-
-    <!-- Título -->
-    <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
+<!-- Conteúdo principal -->
+<main>
+  <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5 text-center">
+    <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Bem-vindo ao NeuroScript</h1>
     <p class="text-slate-300 mb-6 text-sm md:text-base">
-      Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.
+      Essa é a área principal do site. O menu de aviso fica fixo no canto, mas o conteúdo aparece aqui no centro.
     </p>
-
-    <!-- Botão seguro -->
-    <button id="getScriptBtn" class="bg-purple-600 hover:bg-purple-700 text-white text-base md:text-xl font-bold py-3 md:py-4 px-6 md:px-10 rounded-2xl shadow-lg transition">
-      Obter Script
-    </button>
-
-    <div class="mt-6 text-xs md:text-sm text-slate-400">
-      🔒 Link protegido — não é possível copiar diretamente
-    </div>
   </section>
 </main>
 
-<footer class="mt-8 text-slate-500 text-xs md:text-sm">
+<footer class="mt-8 text-slate-500 text-xs md:text-sm text-center">
   © 2025 NeuroScript. Todos os direitos reservados.
 </footer>
 
 <script>
-  // Botão
-  const getScriptBtn = document.getElementById('getScriptBtn');
-  getScriptBtn.addEventListener('click', () => {
-    const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
-    window.open(url, '_blank');
-  });
-  getScriptBtn.addEventListener('mouseover', e => e.preventDefault());
-
   // Parallax com mouse
   const parallaxElems = document.querySelectorAll('.parallax');
   document.addEventListener('mousemove', e => {
