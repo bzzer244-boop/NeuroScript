@@ -8,7 +8,7 @@
 <!-- Open Graph (WhatsApp, Facebook, Discord, etc) -->
 <meta property="og:title" content="NeuroScript — Obter Script">
 <meta property="og:description" content="Script em desenvolvimento, confira aqui!">
-<meta property="og:image" content="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Desemvolvimentto.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Desemvolviment.png">
 <meta property="og:url" content="https://bzzer244-boop.github.io/NeuroScript/">
 <meta property="og:type" content="website">
 
@@ -16,7 +16,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="NeuroScript — Obter Script">
 <meta name="twitter:description" content="Script em desenvolvimento, confira aqui!">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Desemvolvimentto.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Desemvolviment.png">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
@@ -48,27 +48,26 @@
     backdrop-filter: blur(8px);
   }
 
-  /* Neon Glow Animado */
+  /* Neon Glow Animado (suavizado) */
   .neon-glow {
-    border: 1px solid rgba(0, 255, 255, 0.4);
+    border: 1px solid rgba(0, 255, 255, 0.3);
     animation: neonPulse 3s infinite alternate;
   }
 
-@keyframes neonPulse {
-  0% {
-    box-shadow:
-      0 0 4px rgba(0, 255, 255, 0.4),
-      0 0 8px rgba(0, 255, 255, 0.2),
-      0 0 12px rgba(0, 255, 255, 0.1);
+  @keyframes neonPulse {
+    0% {
+      box-shadow:
+        0 0 4px rgba(0, 255, 255, 0.5),
+        0 0 8px rgba(0, 255, 255, 0.3),
+        0 0 12px rgba(0, 255, 255, 0.2);
+    }
+    100% {
+      box-shadow:
+        0 0 10px rgba(0, 255, 255, 0.6),
+        0 0 20px rgba(0, 255, 255, 0.4),
+        0 0 25px rgba(0, 255, 255, 0.2);
+    }
   }
-  100% {
-    box-shadow:
-      0 0 10px rgba(0, 255, 255, 0.6),
-      0 0 20px rgba(0, 255, 255, 0.4),
-      0 0 25px rgba(0, 255, 255, 0.2);
-  }
-}
-
 
   /* Painel anúncio no canto */
   .fixed-announcement {
