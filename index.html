@@ -71,9 +71,8 @@
     position: fixed;
     top: 30px;
     left: 30px;
-    width: 400px;
-    max-width: 95%;
-    padding: 24px;
+    width: 380px;
+    padding: 26px;
     border-radius: 24px;
     z-index: 50;
     text-align: center;
@@ -86,8 +85,8 @@
     width: 360px;
     max-height: 500px;
     overflow-y: auto;
-    padding: 20px;
-    border-radius: 20px;
+    padding: 22px;
+    border-radius: 22px;
     z-index: 50;
     text-align: left;
   }
@@ -137,6 +136,14 @@
     transform: scale(1.05);
   }
 
+  .btn-purple {
+    background: linear-gradient(to right, #9333ea, #7e22ce);
+    color: white;
+  }
+  .btn-purple:hover {
+    background: linear-gradient(to right, #7e22ce, #6b21a8);
+  }
+
   .btn-green {
     background: linear-gradient(to right, #22c55e, #16a34a);
     color: white;
@@ -154,16 +161,17 @@
   }
 
   .btn-red {
-    background: linear-gradient(to right, #ef4444, #dc2626);
+    background: linear-gradient(to right, #ef4444, #b91c1c);
     color: white;
-    opacity: 0.8;
     cursor: not-allowed;
+    opacity: 0.8;
   }
+
   .btn-blue {
     background: linear-gradient(to right, #3b82f6, #1d4ed8);
     color: white;
-    opacity: 0.8;
     cursor: not-allowed;
+    opacity: 0.8;
   }
 </style>
 </head>
@@ -179,14 +187,14 @@
     Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
     O script está em desenvolvimento e pode apresentar alguns bugs.
   </p>
-  <ul class="mt-4 text-sm space-y-1">
+  <ul class="mt-4 text-sm space-y-1 text-left">
     <li>⚙️ Estado: Em desenvolvimento</li>
     <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-    <li>🚀 Uso: Fase de teste</li>
+    <li>🌱 Uso: Fase de teste</li>
     <li>✍️ Autor: Jhon</li>
   </ul>
-  <button class="btn btn-red mt-5">☎️ Suporte (Em desenvolvimento)</button>
-  <p class="text-xs mt-4 leading-relaxed">
+  <button class="btn btn-red mt-5">🛠️ Suporte (Em desenvolvimento)</button>
+  <p class="mt-5 text-sm text-slate-300 leading-relaxed">
     ⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente, com bom resultado, e podemos continuar trazendo atualizações regularmente.
   </p>
   <button class="btn btn-blue mt-3">⭐ Avalie Aqui (Em manutenção)</button>
@@ -201,10 +209,10 @@
 <!-- Painel Pro -->
 <section class="fixed-pro glass parallax neon-glow">
   <h2 class="font-bold text-lg mb-3">🚀 Versão PRO</h2>
-  <p class="text-xs text-slate-300 mb-3 leading-relaxed">
-    🟢 <strong>Free:</strong> Teleporte pro brainrot, ✈️ Fly, ⚡ Personalizar Velocidade, 🤖 Auto Collect.  
+  <p class="text-xs text-slate-300 mb-3 leading-relaxed text-left">
+    🆓 <strong>Free:</strong> ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.  
     <br><br>
-    🟡 <strong>PRO:</strong> Tudo do Free + 🌍 entrar em outros servidores e 🧠 coletar brainrot automaticamente.  
+    💎 <strong>PRO:</strong> Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.  
     <br><br>
     Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong>
   </p>
@@ -223,7 +231,7 @@
   <p class="text-slate-300 mb-6 text-sm md:text-base">
     Clique no botão abaixo para copiar o script da versão Free.
   </p>
-  <button id="getScriptBtn" class="btn btn-green">✨ Obter Versão Free</button>
+  <button id="getScriptBtn" class="btn btn-green">⚡ Obter Versão Free</button>
   <div class="mt-6 text-xs md:text-sm text-slate-400">
     🔒 Copiar direto — não é possível visualizar
   </div>
@@ -278,21 +286,14 @@
     parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
   });
 
-  // Fundo partículas coloridas neon
+  // Fundo partículas CIANO
   const canvas = document.getElementById('bgCanvas');
   const ctx = canvas.getContext('2d');
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-
   const particles = [];
   const particleCount = 80;
-  const colors = [
-    'rgba(0,255,255,0.7)',   // ciano
-    'rgba(255,0,255,0.7)',   // rosa neon
-    'rgba(0,255,0,0.7)',     // verde neon
-    'rgba(255,255,0,0.7)',   // amarelo
-    'rgba(255,100,0,0.7)'    // laranja neon
-  ];
+  const color = 'rgba(0,255,255,0.7)'; // apenas ciano neon
 
   class Particle {
     constructor(){
@@ -301,7 +302,7 @@
       this.radius = Math.random() * 2 + 1;
       this.speedX = (Math.random() - 0.5) * 0.3;
       this.speedY = (Math.random() - 0.5) * 0.3;
-      this.color = colors[Math.floor(Math.random() * colors.length)];
+      this.color = color;
     }
     update(){
       this.x += this.speedX;
@@ -318,9 +319,7 @@
       ctx.fill();
     }
   }
-
   for(let i=0;i<particleCount;i++){ particles.push(new Particle()); }
-
   function animate(){
     ctx.clearRect(0,0,canvas.width,canvas.height);
     particles.forEach(p=>{ p.update(); p.draw(); });
