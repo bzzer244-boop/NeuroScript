@@ -10,6 +10,7 @@
     .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
     .fixed-announcement { position: fixed; top: 20px; left: 20px; width: 300px; z-index: 50; }
     button { cursor: pointer; }
+    img { max-width: 100%; border-radius: 12px; margin-bottom: 20px; }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center p-6 text-slate-100">
@@ -30,16 +31,25 @@
           <li>🌱 Uso: Fase de teste, poucos usuários</li>
           <li>✍️ Autor: Jhon</li>
         </ul>
+
+        <!-- Botão de suporte em desenvolvimento -->
+        <button class="mt-4 w-full bg-gray-600 text-white py-2 rounded-lg cursor-not-allowed opacity-70 hover:opacity-80">
+          🚩 Suporte (Em desenvolvimento)
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- Botão principal centralizado -->
+  <!-- Parte principal centralizada -->
   <main class="max-w-3xl w-full text-center">
     <section class="glass rounded-2xl p-6 shadow-2xl border border-white/5">
+      <!-- Imagem no topo -->
+      <img src="/mnt/data/e6e1cb52-a806-45d1-9640-410b33111ca5.png" alt="NeuroScript Logo">
+
       <h1 class="text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
       <p class="text-slate-300 mb-6">Clique no botão abaixo para acessar o script. O link não será exibido ao passar o mouse.</p>
 
+      <!-- Botão seguro -->
       <button id="getScriptBtn"
               class="bg-purple-600 hover:bg-purple-700 text-white text-xl font-bold py-4 px-10 rounded-2xl shadow-lg transition">
         Obter Script
@@ -56,7 +66,7 @@
 
     getScriptBtn.addEventListener('click', () => {
       // Coloque aqui o link real do script
-      const url = 'https://exemplo.com';
+      const url = 'https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server';
       window.open(url, '_blank'); // Abre em nova aba
     });
 
