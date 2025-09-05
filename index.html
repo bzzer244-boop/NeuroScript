@@ -21,7 +21,16 @@
       background: #0a0f1c;
     }
 
-    /* Painel de anúncio (esquerda) */
+    /* Painéis e cards com azul escuro transparente */
+    .fixed-announcement,
+    .fixed-eval,
+    .fixed-pro,
+    .main-card {
+      background: rgba(0, 20, 40, 0.7);
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+      border-radius: 22px;
+    }
+
     .fixed-announcement {
       position: fixed;
       top: 30px;
@@ -30,35 +39,21 @@
       min-height: 600px;
       font-size: 1rem;
       padding: 28px;
-      border-radius: 24px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     }
 
-    /* Painel avaliações */
     .fixed-eval {
       position: fixed;
       top: 30px;
       right: 30px;
       width: 360px;
-      max-height: 350px;
+      max-height: 400px;
       font-size: 1rem;
       padding: 20px;
-      border-radius: 22px;
       text-align: left;
       overflow-y: auto;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     }
 
-    /* Neon nos nomes */
-    .fixed-eval strong {
-      color: #00ffff;
-      text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
-    }
-
-    /* Painel versão PRO */
     .fixed-pro {
       position: fixed;
       bottom: 30px;
@@ -67,23 +62,22 @@
       min-height: 400px;
       font-size: 1.05rem;
       padding: 24px;
-      border-radius: 22px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     }
 
-    /* Card central */
     .main-card {
       margin: auto;
       margin-top: 80px;
       width: clamp(500px, 55vw, 800px);
       min-height: 400px;
       padding: 40px;
-      border-radius: 28px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+    }
+
+    /* Neon nos nomes */
+    .fixed-eval strong {
+      color: #00ffff;
+      text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
     }
 
     /* Botões */
@@ -124,7 +118,6 @@
       box-shadow: 0 0 20px #ffe066, 0 0 40px #ffe066;
     }
 
-    /* Botões desativados */
     .btn-disabled {
       background: #444;
       color: #aaa;
@@ -143,7 +136,7 @@
       color: #bbb;
     }
 
-    /* Textos coloridos com emojis */
+    /* Textos coloridos */
     .highlight {
       color: #00ffff;
       text-shadow: 0 0 6px #00ffff, 0 0 15px #00ffff;
@@ -151,6 +144,28 @@
     .highlight-gold {
       color: #ffcc00;
       text-shadow: 0 0 6px #ffcc00, 0 0 15px #ffcc00;
+    }
+
+    /* Popup neon */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 255, 255, 0.9);
+      color: black;
+      padding: 20px 40px;
+      border-radius: 16px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-align: center;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .popup.show {
+      opacity: 1;
     }
   </style>
 </head>
@@ -174,12 +189,13 @@
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="180"><br>
     <h2 class="highlight">⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
-    <button class="btn btn-free">⚡ Obter Versão Free</button>
+    <button class="btn btn-free" id="btnFree">⚡ Obter Versão Free</button>
   </div>
 
   <!-- Painel avaliações -->
   <div class="fixed-eval">
     <h3>⭐ Todas as Avaliações Nossas</h3>
+    <p class="highlight">📢 Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente, com bom resultado, e podemos continuar trazendo atualizações regularmente. 🙌</p>
     <div id="avaliacoes"></div>
   </div>
 
@@ -189,13 +205,16 @@
     <p>🆓 <strong class="highlight">Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
     <p>💎 <strong class="highlight-gold">PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
     <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong class="highlight-gold">distribuindo a versão PRO para vocês!</strong></p>
-    <button class="btn btn-pro">🔥 Obter Versão PRO</button>
+    <button class="btn btn-pro" id="btnPro">🔥 Obter Versão PRO</button>
   </div>
 
   <!-- Rodapé -->
   <footer>
     © 2025 NeuroScript. Todos os direitos reservados.
   </footer>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">⚡ Script Free copiado!</div>
 
   <!-- Partículas -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -211,29 +230,15 @@
       }
     });
 
-    // 100 nomes diferentes
-    const nomes = [
-      "Ana", "Bruno", "Carla", "Diego", "Eduarda", "Felipe", "Gabriela", "Hugo", "Isabela", "João",
-      "Karina", "Lucas", "Mariana", "Nicolas", "Olívia", "Pedro", "Quésia", "Rafael", "Sofia", "Thiago",
-      "Ursula", "Vinicius", "Wesley", "Xavier", "Yara", "Zeca", "Arthur", "Bianca", "Caio", "Daniela",
-      "Enzo", "Fernanda", "Gustavo", "Helena", "Igor", "Juliana", "Kauan", "Larissa", "Matheus", "Natália",
-      "Otávio", "Paula", "Renan", "Samuel", "Talita", "Victor", "Willian", "Ximena", "Yasmin", "Zilda",
-      "Adriana", "Bernardo", "Clara", "Davi", "Elisa", "Fábio", "Geovana", "Henrique", "Iasmin", "Jorge",
-      "Kelly", "Leandro", "Mirella", "Nilton", "Orlando", "Priscila", "Rodrigo", "Sara", "Tatiane", "Ulisses",
-      "Valéria", "Wellington", "Xuxa", "Yuri", "Zuleide", "Alan", "Bárbara", "Catarina", "Denis", "Emanuel",
-      "Fabiana", "Gilberto", "Heitor", "Ingrid", "Jonas", "Kátia", "Luan", "Mário", "Nicole", "Oscar",
-      "Patrícia", "Raquel", "Simone", "Tadeu", "Vera"
-    ];
+    // Lista de nomes
+    const nomes = ["Ana","Bruno","Carla","Diego","Eduarda","Felipe","Gabriela","Hugo","Isabela","João","Lucas","Mariana","Pedro","Rafael","Sofia","Thiago","Vinicius","Yara","Zeca","Larissa"];
 
-    // 30 mensagens diferentes
+    // Lista de mensagens
     const mensagens = [
       "Top demais! 🔥", "Valeu cada segundo! 🚀", "Ótimo desempenho 💎", "Simples e eficiente ⚡",
-      "Nunca vi igual 👏", "Funciona muito bem ✅", "Recomendo a todos ⭐", "Maravilhoso 🤩",
-      "Script incrível! 🔥", "Melhor que já usei 💯", "Vale a pena! 🤑", "Muito bom mesmo 👌",
-      "Suporte nota 10 🎧", "Fácil de usar 🖱️", "Rápido e leve ⚡", "Qualidade absurda 💎",
-      "Gostei muito 😍", "Me ajudou demais 🤖", "Genial! 👏", "Topzera 🚀", "Excelente 💯",
-      "Perfeito 🔥", "Show de bola 🎉", "Bem prático 🛠️", "Curti demais 😎", "Recomendo fortemente ⭐",
-      "Vale muito a pena 💎", "Não me arrependo 🙌", "Sensacional 🔥", "Incrível resultado 🚀"
+      "Funciona muito bem ✅", "Recomendo a todos ⭐", "Maravilhoso 🤩", "Script incrível! 🔥",
+      "Melhor que já usei 💯", "Muito bom mesmo 👌", "Fácil de usar 🖱️", "Rápido e leve ⚡",
+      "Gostei muito 😍", "Me ajudou demais 🤖", "Excelente 💯", "Show de bola 🎉"
     ];
 
     // Gerar avaliações aleatórias
@@ -244,6 +249,30 @@
       const p = document.createElement("p");
       p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
       container.appendChild(p);
+    }
+
+    // Copiar script versão Free
+    document.getElementById("btnFree").addEventListener("click", () => {
+      const scriptFree = `-- NeuroScript Free
+-- Coloque aqui a mensagem ou script que você quiser liberar
+print("⚡ NeuroScript Free carregado!")`;
+      navigator.clipboard.writeText(scriptFree).then(() => {
+        showPopup();
+      });
+    });
+
+    // Redirecionar para a versão PRO (link Roblox)
+    document.getElementById("btnPro").addEventListener("click", () => {
+      window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
+    });
+
+    // Função popup estilizado
+    function showPopup() {
+      const popup = document.getElementById("popup");
+      popup.classList.add("show");
+      setTimeout(() => {
+        popup.classList.remove("show");
+      }, 2000);
     }
   </script>
 </body>
