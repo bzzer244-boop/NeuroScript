@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #061726; /* fundo azul escuro */
+      background: #061726;
       color: white;
       overflow: hidden;
     }
@@ -21,12 +21,12 @@
       background: #061726;
     }
 
-    /* Painéis */
+    /* Painéis gerais */
     .fixed-announcement,
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: rgba(10, 30, 55, 0.9); /* azul escuro translúcido */
+      background: rgba(10, 30, 55, 0.9);
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       border-radius: 18px;
       transition: transform 0.3s ease;
@@ -61,8 +61,8 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 280px;
-      min-height: 220px;
+      width: 260px;
+      min-height: 200px;
       padding: 14px;
       text-align: center;
     }
@@ -80,9 +80,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 420px;
-      min-height: 420px;
-      padding: 24px;
+      width: 400px;
+      min-height: 380px;
+      padding: 20px;
       text-align: center;
     }
 
@@ -124,11 +124,11 @@
     }
 
     .btn-disabled {
-      background: #444;
-      color: #aaa;
+      background: #222;
+      color: #bbb;
       cursor: not-allowed;
-      box-shadow: none;
-      pointer-events: none;
+      box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
+      opacity: 0.6;
     }
 
     /* Botão maior Free */
@@ -136,7 +136,7 @@
       font-size: 1.3rem;
       padding: 16px 26px;
       width: 90%;
-      max-width: 340px;
+      max-width: 320px;
     }
 
     /* Popup Copiado */
@@ -149,7 +149,7 @@
       padding: 6px 12px;
       border-radius: 8px;
       font-weight: bold;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       box-shadow: 0 0 8px #00ffcc, 0 0 18px #00ffcc;
       opacity: 0;
       transform: translateY(5px);
@@ -173,10 +173,42 @@
 <body>
   <div id="particles-js"></div>
 
+  <!-- Painel Aviso -->
+  <div class="fixed-announcement panel">
+    <h3>⚡ Aviso sobre o NeuroScript</h3>
+    <p>
+      Rapaziada que está apoiando o <b>NeuroScript</b>, muito obrigado pelo suporte!  
+      O script está em desenvolvimento e pode apresentar alguns bugs.
+    </p>
+    <p>⚙️ Estado: Em desenvolvimento<br>🐞 Bugs: Possíveis<br>👨‍💻 Autor: Jhon</p>
+    <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
+    <p>⭐ Avalie aqui se você gostar do nosso script! 🚀</p>
+    <button class="btn btn-disabled">⭐ Avaliar Aqui (Em manutenção)</button>
+  </div>
+
+  <!-- Painel Avaliações -->
+  <div class="fixed-eval panel">
+    <h3>📢 Todas as Avaliações</h3>
+    <p><strong>Arthur:</strong> Muito prático de usar!</p>
+    <p><strong>Thiago:</strong> Melhor script que já testei!</p>
+    <p><strong>Caio:</strong> Gostei bastante!</p>
+    <p><strong>Larissa:</strong> Valeu muito a pena usar!</p>
+  </div>
+
+  <!-- Painel PRO -->
+  <div class="fixed-pro panel">
+    <h3>🚀 Versão PRO</h3>
+    <p>
+      🔹 Free: Teleporte, Auto Collect e mais.<br>
+      🔹 PRO: Tudo do Free + recursos extras!
+    </p>
+    <button class="btn btn-pro">🔥 Obter Versão PRO</button>
+  </div>
+
   <!-- Card central -->
   <div class="main-card panel">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" 
-         alt="NeuroScript Logo" width="160"><br>
+         alt="NeuroScript Logo" width="150"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     
