@@ -27,7 +27,7 @@
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       border-radius: 20px;
       transition: transform 0.3s ease;
-      width: 420px; /* menor que antes */
+      width: 420px;
       max-width: 95%;
     }
 
@@ -59,7 +59,7 @@
       bottom: 30px;
       right: 30px;
       padding: 20px;
-      text-align: center;
+      text-align: left;
     }
 
     /* Card central */
@@ -118,6 +118,15 @@
       cursor: not-allowed;
       box-shadow: none;
       pointer-events: none;
+    }
+
+    /* Listas */
+    ul {
+      padding-left: 20px;
+      margin: 10px 0;
+    }
+    ul li {
+      margin-bottom: 6px;
     }
 
     /* Popup Copiado */
@@ -183,8 +192,12 @@
   <div class="fixed-announcement panel">
     <h2>⚡ Aviso sobre o NeuroScript</h2>
     <p>Obrigado por apoiar o <strong>NeuroScript</strong> 🙌</p>
-    <p>📌 O script ainda está em <strong>desenvolvimento</strong> e pode conter alguns bugs.</p>
-    <p>🛠️ Estado: Em desenvolvimento<br>🐞 Bugs: Possíveis (mande no suporte)<br>🧪 Uso: Fase de teste<br>✍️ Autor: <strong>Jhon</strong></p>
+    <ul>
+      <li>📌 O script ainda está em <strong>desenvolvimento</strong></li>
+      <li>🐞 Pode conter alguns bugs</li>
+      <li>🛠️ Estado: Em teste</li>
+      <li>✍️ Autor: <strong>Jhon</strong></li>
+    </ul>
     <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
     <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
@@ -209,9 +222,11 @@
   <!-- Painel PRO -->
   <div class="fixed-pro panel">
     <h3>🚀 Versão PRO</h3>
-    <p>🆓 <strong>Free</strong>: ⚡ Teleporte, 🕊️ Fly, 🎚️ Velocidade, 🤖 Auto Collect.</p>
-    <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em servidores extras e 📦 coleta automática!</p>
-    <p>🎁 Estamos <strong>distribuindo a versão PRO</strong> gratuitamente por tempo limitado.</p>
+    <ul>
+      <li>🆓 <strong>Free</strong>: ⚡ Teleporte, 🕊️ Fly, 🎚️ Velocidade, 🤖 Auto Collect</li>
+      <li>💎 <strong>PRO</strong>: Tudo do Free + 🌍 Servidores extras + 📦 Coleta automática</li>
+      <li>🎁 <strong>Distribuição gratuita</strong> por tempo limitado!</li>
+    </ul>
     <button id="btnPro" class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
