@@ -7,7 +7,8 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #021526, #061726, #0a2440, #000814);
+      background: linear-gradient(135deg, #020c1b, #041830, #061d3a, #0a2448, #020c1b);
+      background-attachment: fixed;
       color: white;
       overflow: hidden;
     }
@@ -25,11 +26,10 @@
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: rgba(10, 40, 70, 0.65); /* mais transparente */
+      background: rgba(10, 40, 70, 0.6); /* translúcido */
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       border-radius: 20px;
       transition: transform 0.3s ease;
-      backdrop-filter: blur(6px); /* efeito vidro */
     }
 
     /* Painel esquerdo */
@@ -62,27 +62,20 @@
       bottom: 30px;
       right: 30px;
       width: 330px;
-      min-height: 260px;
-      padding: 18px;
+      min-height: 300px;
+      padding: 20px;
       text-align: center;
-    }
-    .fixed-pro h3 {
-      margin-bottom: 10px;
-    }
-    .fixed-pro p {
-      font-size: 0.92rem;
-      line-height: 1.4rem;
     }
 
     /* Card central */
     .main-card {
-      position: fixed;
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 420px;
-      min-height: 420px;
-      padding: 28px;
+      width: 500px;
+      min-height: 500px;
+      padding: 30px;
       text-align: center;
     }
 
@@ -98,6 +91,7 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .btn:hover {
       transform: scale(1.05);
     }
@@ -140,8 +134,13 @@
 
     /* Popup Copiado */
     .popup {
-      margin-top: 12px;
-      display: inline-block;
+      margin-top: 10px;
+      display: block;
+      text-align: center;
+      width: 90%;
+      max-width: 300px;
+      margin-left: auto;
+      margin-right: auto;
       background: rgba(0, 255, 150, 0.95);
       color: black;
       padding: 8px 14px;
@@ -244,10 +243,11 @@ print("⚡ NeuroScript Free carregado!")`;
     });
 
     // Efeito mouse nos paineis
-    document.addEventListener("mousemove", e => {
-      const x = (window.innerWidth / 2 - e.pageX) / 50;
-      const y = (window.innerHeight / 2 - e.pageY) / 50;
-      document.querySelectorAll('.panel').forEach(panel => {
+    document.querySelectorAll('.panel').forEach(panel => {
+      document.addEventListener("mousemove", e => {
+        const x = (window.innerWidth / 2 - e.pageX) / 50;
+        const y = (window.innerHeight / 2 - e.pageY) / 50;
+
         if (panel.classList.contains("main-card")) {
           panel.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
         } else {
@@ -257,8 +257,21 @@ print("⚡ NeuroScript Free carregado!")`;
     });
 
     // Avaliações dinâmicas
-    const names = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana"];
-    const reviews = ["Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!","Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!"];
+    const names = [
+      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
+      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
+      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
+      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
+      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna"
+    ];
+
+    const reviews = [
+      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
+      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
+      "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
+      "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
+      "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!"
+    ];
 
     function addReview() {
       const container = document.getElementById("reviews");
@@ -267,7 +280,7 @@ print("⚡ NeuroScript Free carregado!")`;
       const p = document.createElement("p");
       p.innerHTML = `<strong>${name}</strong>: ${text}`;
       container.prepend(p);
-      if (container.childElementCount > 12) {
+      if (container.childElementCount > 20) {
         container.removeChild(container.lastChild);
       }
     }
