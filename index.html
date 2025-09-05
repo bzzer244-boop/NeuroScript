@@ -27,8 +27,8 @@
     .fixed-pro,
     .main-card {
       background: rgba(0, 20, 40, 0.7);
-      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
       border-radius: 22px;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     }
 
     .fixed-announcement {
@@ -36,8 +36,7 @@
       top: 30px;
       left: 30px;
       width: 360px;
-      min-height: 600px;
-      font-size: 1rem;
+      min-height: 550px;
       padding: 28px;
       text-align: center;
     }
@@ -48,7 +47,6 @@
       right: 30px;
       width: 360px;
       max-height: 350px;
-      font-size: 1rem;
       padding: 20px;
       text-align: left;
       overflow-y: auto;
@@ -59,8 +57,7 @@
       bottom: 30px;
       right: 30px;
       width: 360px;
-      min-height: 400px;
-      font-size: 1.05rem;
+      min-height: 300px;
       padding: 24px;
       text-align: center;
     }
@@ -99,13 +96,13 @@
     }
 
     .btn-free {
-      background: #00e5ff;
+      background: #00e676;
       color: black;
-      box-shadow: 0 0 12px #00e5ff, 0 0 20px #00e5ff;
+      box-shadow: 0 0 12px #00e676, 0 0 20px #00e676;
     }
     .btn-free:hover {
-      background: #00ffff;
-      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+      background: #00ff80;
+      box-shadow: 0 0 20px #00ff80, 0 0 40px #00ff80;
     }
 
     .btn-pro {
@@ -142,13 +139,16 @@
 
   <!-- Painel esquerdo -->
   <div class="fixed-announcement">
-    <h2 class="highlight">⚡ Aviso sobre o NeuroScript</h2>
-    <p>Rapaziada que está apoiando o <strong class="highlight">NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
+    <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
+    <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
     <p>🛠️ Estado: Em desenvolvimento<br>
     🐞 Bugs: Possíveis — reporte no suporte<br>
     🧪 Uso: Fase de teste<br>
     ✍️ Autor: Jhon</p>
     <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
+    <p style="margin-top:15px; font-size:0.9rem; color:#ffeb3b;">
+      ⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se está eficiente e trazer mais atualizações.
+    </p>
     <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
 
@@ -159,14 +159,16 @@
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button class="btn btn-free" id="btnFree">⚡ Obter Versão Free</button>
     <p style="margin-top:20px; font-size:0.95rem; color:#ccc;">
-      ⭐ Se você gostou do script, não esquece de me avaliar e apoiar o projeto!
+      ⭐ Se você gostou do script, não esquece de avaliar e apoiar o projeto!
     </p>
   </div>
 
   <!-- Painel avaliações -->
   <div class="fixed-eval">
-    <h3>⭐ Todas as Avaliações Nossas</h3>
-    <div id="avaliacoes"></div>
+    <h3>📢 Todas as Avaliações Nossas</h3>
+    <div id="reviews">
+      <!-- Mensagens vão ser geradas aqui -->
+    </div>
   </div>
 
   <!-- Painel PRO -->
@@ -212,23 +214,39 @@ print("⚡ NeuroScript Free carregado!")`;
       window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
     });
 
-    // Avaliações aleatórias
-    const nomes = ["Ana","Bruno","Carla","Diego","Eduarda","Felipe","Gabriela","Hugo","Isabela","João","Lucas","Mariana","Pedro","Rafael","Sofia","Thiago","Vinicius","Yara","Zeca","Larissa"];
-    const mensagens = [
-      "Top demais! 🔥", "Valeu cada segundo! 🚀", "Ótimo desempenho 💎", "Simples e eficiente ⚡",
-      "Funciona muito bem ✅", "Recomendo a todos ⭐", "Maravilhoso 🤩", "Script incrível! 🔥",
-      "Melhor que já usei 💯", "Muito bom mesmo 👌", "Fácil de usar 🖱️", "Rápido e leve ⚡",
-      "Gostei muito 😍", "Me ajudou demais 🤖", "Excelente 💯", "Show de bola 🎉"
+    // Sistema de avaliações automáticas
+    const reviews = [
+      "Valeu cada segundo!",
+      "Simples e eficiente!",
+      "Script muito bom!",
+      "Top demais!",
+      "Recomendo demais!",
+      "Ótimo desempenho!",
+      "Sem bugs até agora!",
+      "Funciona perfeito!",
+      "Gostei bastante!",
+      "Faz o que promete!"
     ];
 
-    const container = document.getElementById("avaliacoes");
-    for (let i = 0; i < 8; i++) {
-      const nome = nomes[Math.floor(Math.random() * nomes.length)];
-      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+    const names = [
+      "Thiago", "Pedro", "Ana", "Gabriel",
+      "Sofia", "Rafa", "João", "Beatriz", "Lucas", "Mariana"
+    ];
+
+    function addReview() {
+      const container = document.getElementById("reviews");
+      const name = names[Math.floor(Math.random() * names.length)];
+      const text = reviews[Math.floor(Math.random() * reviews.length)];
       const p = document.createElement("p");
-      p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
-      container.appendChild(p);
+      p.innerHTML = `<strong>${name}</strong>: ${text}`;
+      container.prepend(p);
+      if (container.childElementCount > 20) {
+        container.removeChild(container.lastChild);
+      }
     }
+
+    setInterval(addReview, 3000); // a cada 3s aparece uma nova
+    for (let i = 0; i < 6; i++) addReview(); // inicia com algumas
   </script>
 </body>
 </html>
