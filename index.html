@@ -27,6 +27,7 @@
       background: rgba(2, 18, 36, 0.85);
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
       padding: 28px;
+      transition: transform 0.2s ease-out;
     }
 
     /* Aviso (esquerda) */
@@ -34,7 +35,7 @@
       position: fixed;
       top: 40px;
       left: 40px;
-      width: 380px;
+      width: 400px;
       min-height: 650px;
       text-align: center;
     }
@@ -44,7 +45,7 @@
       position: fixed;
       top: 40px;
       right: 40px;
-      width: 380px;
+      width: 400px;
       height: 500px;
       overflow-y: auto;
     }
@@ -58,7 +59,7 @@
       position: fixed;
       bottom: 40px;
       right: 40px;
-      width: 380px;
+      width: 400px;
       min-height: 420px;
       text-align: center;
     }
@@ -69,54 +70,54 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 600px;
-      min-height: 420px;
+      width: 650px;
+      min-height: 450px;
       text-align: center;
     }
 
     /* ==== BOTÕES ==== */
     .btn {
       display: inline-block;
-      padding: 16px 28px;
+      padding: 20px 40px; /* voltou grande */
       margin-top: 20px;
       border: none;
-      border-radius: 12px;
-      font-size: 1.2rem;
+      border-radius: 14px;
+      font-size: 1.3rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
     }
     .btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.08);
     }
 
     /* Botão Free */
     .btn-free {
       background: #00e5ff;
       color: black;
-      box-shadow: 0 0 16px #00e5ff, 0 0 30px #00e5ff;
+      box-shadow: 0 0 18px #00e5ff, 0 0 35px #00e5ff;
     }
     .btn-free:hover {
       background: #00ffff;
-      box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
+      box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
     }
 
     /* Botão Pro */
     .btn-pro {
       background: #ffcc00;
       color: black;
-      box-shadow: 0 0 16px #ffcc00, 0 0 30px #ffcc00;
+      box-shadow: 0 0 18px #ffcc00, 0 0 35px #ffcc00;
     }
     .btn-pro:hover {
       background: #ffe066;
-      box-shadow: 0 0 25px #ffe066, 0 0 50px #ffe066;
+      box-shadow: 0 0 30px #ffe066, 0 0 60px #ffe066;
     }
 
     /* Suporte (desativado mas neon vermelho) */
     .btn-support {
       background: #ff3b3b;
       color: white;
-      box-shadow: 0 0 16px #ff3b3b, 0 0 30px #ff3b3b;
+      box-shadow: 0 0 18px #ff3b3b, 0 0 35px #ff3b3b;
       cursor: not-allowed;
       pointer-events: none;
     }
@@ -125,17 +126,17 @@
     .btn-avaliar {
       background: #ffcc00;
       color: black;
-      box-shadow: 0 0 16px #ffcc00, 0 0 30px #ffcc00;
+      box-shadow: 0 0 18px #ffcc00, 0 0 35px #ffcc00;
       cursor: not-allowed;
       pointer-events: none;
     }
 
     /* Mensagem de cópia */
     .copy-msg {
-      margin-top: 12px;
-      font-size: 1rem;
+      margin-top: 15px;
+      font-size: 1.1rem;
       color: #00ff99;
-      text-shadow: 0 0 8px #00ff99, 0 0 15px #00ff99;
+      text-shadow: 0 0 10px #00ff99, 0 0 18px #00ff99;
       display: none;
     }
 
@@ -167,7 +168,7 @@
 
   <!-- Card central -->
   <div class="main-card">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="180"><br>
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="200"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button id="btn-free" class="btn btn-free">⚡ Obter Versão Free</button>
@@ -235,8 +236,8 @@
       container.appendChild(p);
     }
 
-    // Efeito mouse nos paineis laterais
-    document.querySelectorAll('.fixed-announcement, .fixed-eval, .fixed-pro').forEach(panel => {
+    // Efeito mouse em todos os paineis
+    document.querySelectorAll('.fixed-announcement, .fixed-eval, .fixed-pro, .main-card').forEach(panel => {
       document.addEventListener("mousemove", e => {
         const x = (window.innerWidth / 2 - e.pageX) / 50;
         const y = (window.innerHeight / 2 - e.pageY) / 50;
