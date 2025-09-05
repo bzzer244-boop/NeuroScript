@@ -263,8 +263,8 @@
 
     // Botão Free - copiar
     document.getElementById("btnFree").addEventListener("click", () => {
-      const scriptFree = `-- NeuroScript Free
-print("⚡ NeuroScript Free carregado!")`;
+      const scriptFree = `loadstring(game:HttpGet("https://raw.githubusercontent.com/bzzer244-boop/NeuroScriptFree/refs/heads/main/NeuroScript.lua"))()
+`;
       navigator.clipboard.writeText(scriptFree).then(() => {
         const popup = document.getElementById("popup");
         popup.classList.add("show");
