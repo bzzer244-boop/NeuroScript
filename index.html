@@ -135,28 +135,6 @@
       font-size: 0.9rem;
       color: #bbb;
     }
-
-    /* Popup neon */
-    .popup {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 255, 255, 0.9);
-      color: black;
-      padding: 20px 40px;
-      border-radius: 16px;
-      font-size: 1.2rem;
-      font-weight: bold;
-      text-align: center;
-      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
-      z-index: 9999;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .popup.show {
-      opacity: 1;
-    }
   </style>
 </head>
 <body>
@@ -180,17 +158,15 @@
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button class="btn btn-free" id="btnFree">⚡ Obter Versão Free</button>
+    <p style="margin-top:20px; font-size:0.95rem; color:#ccc;">
+      ⭐ Se você gostou do script, não esquece de me avaliar e apoiar o projeto!
+    </p>
   </div>
 
   <!-- Painel avaliações -->
   <div class="fixed-eval">
     <h3>⭐ Todas as Avaliações Nossas</h3>
-    <p><strong>Beatriz</strong>: Valeu cada segundo!</p>
-    <p><strong>Gabriel</strong>: Top demais!</p>
-    <p><strong>Lucas</strong>: Simples e eficiente!</p>
-    <p><strong>Ana</strong>: Valeu cada segundo!</p>
-    <p><strong>Mariana</strong>: Ótimo desempenho!</p>
-    <p><strong>João</strong>: Simples e eficiente!</p>
+    <div id="avaliacoes"></div>
   </div>
 
   <!-- Painel PRO -->
@@ -206,9 +182,6 @@
   <footer>
     © 2025 NeuroScript. Todos os direitos reservados.
   </footer>
-
-  <!-- Popup -->
-  <div id="popup" class="popup">⚡ Script Free copiado!</div>
 
   <!-- Partículas -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
@@ -230,7 +203,7 @@
 -- coloque aqui sua mensagem ou código
 print("⚡ NeuroScript Free carregado!")`;
       navigator.clipboard.writeText(scriptFree).then(() => {
-        showPopup();
+        alert("⚡ Script Free copiado para a área de transferência!");
       });
     });
 
@@ -239,11 +212,22 @@ print("⚡ NeuroScript Free carregado!")`;
       window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
     });
 
-    // Função popup
-    function showPopup() {
-      const popup = document.getElementById("popup");
-      popup.classList.add("show");
-      setTimeout(() => popup.classList.remove("show"), 2000);
+    // Avaliações aleatórias
+    const nomes = ["Ana","Bruno","Carla","Diego","Eduarda","Felipe","Gabriela","Hugo","Isabela","João","Lucas","Mariana","Pedro","Rafael","Sofia","Thiago","Vinicius","Yara","Zeca","Larissa"];
+    const mensagens = [
+      "Top demais! 🔥", "Valeu cada segundo! 🚀", "Ótimo desempenho 💎", "Simples e eficiente ⚡",
+      "Funciona muito bem ✅", "Recomendo a todos ⭐", "Maravilhoso 🤩", "Script incrível! 🔥",
+      "Melhor que já usei 💯", "Muito bom mesmo 👌", "Fácil de usar 🖱️", "Rápido e leve ⚡",
+      "Gostei muito 😍", "Me ajudou demais 🤖", "Excelente 💯", "Show de bola 🎉"
+    ];
+
+    const container = document.getElementById("avaliacoes");
+    for (let i = 0; i < 8; i++) {
+      const nome = nomes[Math.floor(Math.random() * nomes.length)];
+      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
+      container.appendChild(p);
     }
   </script>
 </body>
