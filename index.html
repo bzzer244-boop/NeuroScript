@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #02101f, #061726, #0a2440); /* cores da logo */
+      background: radial-gradient(circle at top, #021526, #061726, #0a2440, #000814);
       color: white;
       overflow: hidden;
     }
@@ -18,7 +18,6 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: transparent;
     }
 
     /* Painéis */
@@ -26,10 +25,11 @@
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: linear-gradient(145deg, rgba(2,16,31,0.95), rgba(10,36,64,0.9));
+      background: rgba(10, 40, 70, 0.65); /* mais transparente */
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       border-radius: 20px;
       transition: transform 0.3s ease;
+      backdrop-filter: blur(6px); /* efeito vidro */
     }
 
     /* Painel esquerdo */
@@ -53,7 +53,7 @@
     }
     .fixed-eval strong {
       color: #00ffff;
-      text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff;
+      text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
     }
 
     /* Painel versão PRO */
@@ -62,20 +62,27 @@
       bottom: 30px;
       right: 30px;
       width: 330px;
-      min-height: 300px;
-      padding: 20px;
+      min-height: 260px;
+      padding: 18px;
       text-align: center;
+    }
+    .fixed-pro h3 {
+      margin-bottom: 10px;
+    }
+    .fixed-pro p {
+      font-size: 0.92rem;
+      line-height: 1.4rem;
     }
 
     /* Card central */
     .main-card {
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 400px;
-      min-height: 380px;
-      padding: 20px;
+      width: 420px;
+      min-height: 420px;
+      padding: 28px;
       text-align: center;
     }
 
@@ -83,7 +90,7 @@
     .btn {
       display: inline-block;
       padding: 14px 24px;
-      margin-top: 12px;
+      margin-top: 15px;
       border: none;
       border-radius: 12px;
       font-size: 1.1rem;
@@ -91,7 +98,6 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-
     .btn:hover {
       transform: scale(1.05);
     }
@@ -99,54 +105,53 @@
     .btn-free {
       background: #00e5ff;
       color: black;
-      box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
+      box-shadow: 0 0 12px #00e5ff, 0 0 25px #00e5ff;
     }
     .btn-free:hover {
       background: #00ffff;
-      box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
+      box-shadow: 0 0 20px #00ffff, 0 0 35px #00ffff;
     }
 
     .btn-pro {
       background: #ffcc00;
       color: black;
-      box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
+      box-shadow: 0 0 12px #ffcc00, 0 0 25px #ffcc00;
     }
     .btn-pro:hover {
       background: #ffe066;
-      box-shadow: 0 0 15px #ffe066, 0 0 30px #ffe066;
+      box-shadow: 0 0 20px #ffe066, 0 0 35px #ffe066;
     }
 
     .btn-disabled {
-      background: #222;
-      color: #bbb;
+      background: #444;
+      color: #aaa;
       cursor: not-allowed;
-      box-shadow: 0 0 8px #00ffff, 0 0 16px #00ffff;
-      opacity: 0.6;
+      box-shadow: none;
+      pointer-events: none;
     }
 
     /* Botão maior Free */
     .big-btn {
       font-size: 1.3rem;
-      padding: 16px 26px;
+      padding: 18px 28px;
       width: 90%;
-      max-width: 320px;
+      max-width: 360px;
     }
 
     /* Popup Copiado */
     .popup {
-      margin-top: 8px;
+      margin-top: 12px;
       display: inline-block;
-      text-align: center;
       background: rgba(0, 255, 150, 0.95);
       color: black;
-      padding: 6px 12px;
-      border-radius: 8px;
+      padding: 8px 14px;
+      border-radius: 10px;
       font-weight: bold;
-      font-size: 0.8rem;
-      box-shadow: 0 0 8px #00ffcc, 0 0 18px #00ffcc;
+      font-size: 0.9rem;
+      box-shadow: 0 0 12px #00ffcc, 0 0 25px #00ffcc;
       opacity: 0;
-      transform: translateY(5px);
-      transition: all 0.4s ease;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
     }
     .popup.show {
       opacity: 1;
@@ -158,7 +163,7 @@
       bottom: 10px;
       width: 100%;
       text-align: center;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: #bbb;
     }
   </style>
@@ -166,45 +171,41 @@
 <body>
   <div id="particles-js"></div>
 
-  <!-- Painel Aviso -->
+  <!-- Painel esquerdo -->
   <div class="fixed-announcement panel">
     <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
-    <p>
-      Rapaziada que está apoiando o <b>NeuroScript</b>, muito obrigado pelo suporte!  
-      O script está em desenvolvimento e pode apresentar alguns bugs.
-    </p>
-    <p>⚙️ Estado: Em desenvolvimento<br>🐞 Bugs: Possíveis<br>👨‍💻 Autor: Jhon</p>
+    <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
+    <p>🛠️ Estado: Em desenvolvimento<br> 🐞 Bugs: Possíveis — reporte no suporte<br> 🧪 Uso: Fase de teste<br> ✍️ Autor: Jhon</p>
+
     <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
-    <p>⭐ Avalie aqui se você gostar do nosso script! 🚀</p>
-    <button class="btn btn-disabled">⭐ Avaliar Aqui (Em manutenção)</button>
+    <p style="margin-top:15px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
+    <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
 
-  <!-- Painel Avaliações -->
+  <!-- Card central -->
+  <div class="main-card panel">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" 
+         alt="NeuroScript Logo" width="180"><br>
+    <h2>⚡🤖 Obter NeuroScript</h2>
+    <p>Clique no botão abaixo para copiar o script da versão Free.</p>
+    
+    <button id="btnFree" class="btn btn-free big-btn">⚡ Obter Versão Free</button>
+    <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
+  </div>
+
+  <!-- Painel avaliações -->
   <div class="fixed-eval panel">
-    <h3>📢 Todas as Avaliações</h3>
+    <h3>📢 Todas as Avaliações Nossas</h3>
     <div id="reviews"></div>
   </div>
 
   <!-- Painel PRO -->
   <div class="fixed-pro panel">
     <h3>🚀 Versão PRO</h3>
-    <p>
-      🆓 <b>Free</b>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.<br><br>
-      💎 <b>PRO</b>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.
-    </p>
-    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <b>distribuindo a versão PRO para vocês!</b></p>
-    <button class="btn btn-pro">🔥 Obter Versão PRO</button>
-  </div>
-
-  <!-- Card central -->
-  <div class="main-card panel">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" 
-         alt="NeuroScript Logo" width="150"><br>
-    <h2>⚡🤖 Obter NeuroScript</h2>
-    <p>Clique no botão abaixo para copiar o script da versão Free.</p>
-    
-    <button id="btnFree" class="btn btn-free big-btn">⚡ Obter Versão Free</button>
-    <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
+    <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
+    <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
+    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong></p>
+    <button id="btnPro" class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
   <!-- Rodapé -->
@@ -233,15 +234,19 @@ print("⚡ NeuroScript Free carregado!")`;
       navigator.clipboard.writeText(scriptFree).then(() => {
         const popup = document.getElementById("popup");
         popup.classList.add("show");
-        setTimeout(() => popup.classList.remove("show"), 2000);
+        setTimeout(() => popup.classList.remove("show"), 2500);
       });
     });
 
-    // Movimento dos painéis
+    // Botão PRO
+    document.getElementById("btnPro").addEventListener("click", () => {
+      window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
+    });
+
+    // Efeito mouse nos paineis
     document.addEventListener("mousemove", e => {
       const x = (window.innerWidth / 2 - e.pageX) / 50;
       const y = (window.innerHeight / 2 - e.pageY) / 50;
-
       document.querySelectorAll('.panel').forEach(panel => {
         if (panel.classList.contains("main-card")) {
           panel.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
@@ -252,25 +257,8 @@ print("⚡ NeuroScript Free carregado!")`;
     });
 
     // Avaliações dinâmicas
-    const names = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
-      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
-      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
-      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
-      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna",
-      "Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana",
-      "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
-      "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
-      "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
-      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"];
-
-    const reviews = ["Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
-      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
-      "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
-      "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
-      "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!",
-      "Facilita demais a vida!","Simplesmente incrível!","Funciona liso sem travar!",
-      "Me surpreendeu bastante!","Top qualidade!","Valeu muito a pena usar!","Melhor atualização até agora!",
-      "Rápido e sem complicação!","Confio de olhos fechados!"];
+    const names = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana"];
+    const reviews = ["Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!","Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!"];
 
     function addReview() {
       const container = document.getElementById("reviews");
@@ -279,7 +267,7 @@ print("⚡ NeuroScript Free carregado!")`;
       const p = document.createElement("p");
       p.innerHTML = `<strong>${name}</strong>: ${text}`;
       container.prepend(p);
-      if (container.childElementCount > 20) {
+      if (container.childElementCount > 12) {
         container.removeChild(container.lastChild);
       }
     }
