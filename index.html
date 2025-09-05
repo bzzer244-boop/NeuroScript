@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #061321; /* fundo parecido com o logo */
+      background: #061726; /* fundo azul escuro */
       color: white;
       overflow: hidden;
     }
@@ -18,19 +18,22 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: #061321;
+      background: #061726;
     }
 
-    /* ==== PAINEIS ==== */
-    .fixed-announcement, .fixed-eval, .fixed-pro, .main-card {
+    /* Painéis */
+    .fixed-announcement,
+    .fixed-eval,
+    .fixed-pro,
+    .main-card {
+      background: rgba(10, 40, 70, 0.85); /* azul escuro translúcido */
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
       border-radius: 24px;
-      background: rgba(2, 18, 36, 0.85);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.6);
       padding: 28px;
       transition: transform 0.2s ease-out;
     }
 
-    /* Aviso (esquerda) */
+    /* Painel esquerdo */
     .fixed-announcement {
       position: fixed;
       top: 40px;
@@ -40,7 +43,7 @@
       text-align: center;
     }
 
-    /* Avaliações (direita superior) */
+    /* Painel avaliações */
     .fixed-eval {
       position: fixed;
       top: 40px;
@@ -54,7 +57,7 @@
       text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
     }
 
-    /* Versão PRO (direita inferior) */
+    /* Painel versão PRO */
     .fixed-pro {
       position: fixed;
       bottom: 40px;
@@ -64,7 +67,7 @@
       text-align: center;
     }
 
-    /* Painel central */
+    /* Card central */
     .main-card {
       position: absolute;
       top: 50%;
@@ -75,10 +78,10 @@
       text-align: center;
     }
 
-    /* ==== BOTÕES ==== */
+    /* Botões */
     .btn {
       display: inline-block;
-      padding: 20px 40px; /* voltou grande */
+      padding: 20px 40px;
       margin-top: 20px;
       border: none;
       border-radius: 14px;
@@ -87,11 +90,11 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
+
     .btn:hover {
       transform: scale(1.08);
     }
 
-    /* Botão Free */
     .btn-free {
       background: #00e5ff;
       color: black;
@@ -102,7 +105,6 @@
       box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
     }
 
-    /* Botão Pro */
     .btn-pro {
       background: #ffcc00;
       color: black;
@@ -113,7 +115,7 @@
       box-shadow: 0 0 30px #ffe066, 0 0 60px #ffe066;
     }
 
-    /* Suporte (desativado mas neon vermelho) */
+    /* Botão Suporte (desativado mas neon vermelho) */
     .btn-support {
       background: #ff3b3b;
       color: white;
@@ -122,7 +124,7 @@
       pointer-events: none;
     }
 
-    /* Avaliação (desativado mas neon amarelo) */
+    /* Botão Avaliar (desativado mas neon amarelo) */
     .btn-avaliar {
       background: #ffcc00;
       color: black;
@@ -131,16 +133,16 @@
       pointer-events: none;
     }
 
-    /* Mensagem de cópia */
-    .copy-msg {
+    /* Popup Copiado */
+    .popup {
       margin-top: 15px;
       font-size: 1.1rem;
       color: #00ff99;
       text-shadow: 0 0 10px #00ff99, 0 0 18px #00ff99;
       display: none;
+      font-weight: bold;
     }
 
-    /* Rodapé */
     footer {
       position: fixed;
       bottom: 10px;
@@ -155,34 +157,34 @@
   <div id="particles-js"></div>
 
   <!-- Painel esquerdo -->
-  <div class="fixed-announcement">
+  <div class="fixed-announcement panel">
     <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
     <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
     <p>🛠️ Estado: Em desenvolvimento<br> 🐞 Bugs: Possíveis — reporte no suporte<br> 🧪 Uso: Fase de teste<br> ✍️ Autor: Jhon</p>
 
     <button class="btn btn-support">📞 Suporte (Em desenvolvimento)</button>
 
-    <p style="margin-top: 20px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
+    <p style="margin-top:20px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
     <button class="btn btn-avaliar">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
 
   <!-- Card central -->
-  <div class="main-card">
+  <div class="main-card panel">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="200"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button id="btn-free" class="btn btn-free">⚡ Obter Versão Free</button>
-    <p id="copy-msg" class="copy-msg">✅ Copiado Script NeuroScript</p>
+    <p id="copy-msg" class="popup">✅ Copiado Script NeuroScript</p>
   </div>
 
   <!-- Painel avaliações -->
-  <div class="fixed-eval">
+  <div class="fixed-eval panel">
     <h3>📢 Todas as Avaliações Nossas</h3>
     <div id="avaliacoes"></div>
   </div>
 
   <!-- Painel PRO -->
-  <div class="fixed-pro">
+  <div class="fixed-pro panel">
     <h3>🚀 Versão PRO</h3>
     <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
     <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
@@ -202,12 +204,12 @@
   <script>
     particlesJS("particles-js", {
       particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { value: 100, density: { enable: true, value_area: 800 } },
         color: { value: "#00ffff" },
         shape: { type: "circle" },
         opacity: { value: 0.5 },
         size: { value: 3 },
-        move: { enable: true, speed: 1, out_mode: "out" }
+        move: { enable: true, speed: 1.5, out_mode: "out" }
       }
     });
 
@@ -221,23 +223,27 @@
     });
 
     // Avaliações automáticas
-    const nomes = Array.from({length: 100}, (_, i) => "Usuário" + (i+1));
+    const nomes = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana"];
     const mensagens = [
-      "Muito prático de usar!", "Melhor script que já testei!", "Gostei bastante!",
-      "Valeu muito a pena usar!", "Funciona perfeito!", "Não esperava que fosse tão bom!",
-      "Script leve e eficiente!", "Top demais!", "Recomendo demais!", "Ótimo desempenho!"
+      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
+      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!"
     ];
     const container = document.getElementById("avaliacoes");
-    for (let i = 0; i < 30; i++) {
+    function addReview() {
       const nome = nomes[Math.floor(Math.random() * nomes.length)];
       const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
       const p = document.createElement("p");
       p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
-      container.appendChild(p);
+      container.prepend(p);
+      if (container.childElementCount > 20) {
+        container.removeChild(container.lastChild);
+      }
     }
+    for (let i = 0; i < 10; i++) addReview();
+    setInterval(addReview, 3000);
 
     // Efeito mouse em todos os paineis
-    document.querySelectorAll('.fixed-announcement, .fixed-eval, .fixed-pro, .main-card').forEach(panel => {
+    document.querySelectorAll('.panel').forEach(panel => {
       document.addEventListener("mousemove", e => {
         const x = (window.innerWidth / 2 - e.pageX) / 50;
         const y = (window.innerHeight / 2 - e.pageY) / 50;
