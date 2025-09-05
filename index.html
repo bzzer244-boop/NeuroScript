@@ -26,30 +26,29 @@
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: rgba(10, 40, 70, 0.85); /* azul escuro translúcido */
-      box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
-      border-radius: 24px;
-      padding: 28px;
-      transition: transform 0.2s ease-out;
+      background: rgba(10, 40, 70, 0.8); /* azul escuro translúcido */
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+      border-radius: 20px;
+      transition: transform 0.3s ease;
     }
 
     /* Painel esquerdo */
     .fixed-announcement {
       position: fixed;
-      top: 40px;
-      left: 40px;
-      width: 400px;
-      min-height: 650px;
-      text-align: center;
+      top: 30px;
+      left: 30px;
+      width: 330px;
+      padding: 20px;
     }
 
     /* Painel avaliações */
     .fixed-eval {
       position: fixed;
-      top: 40px;
-      right: 40px;
-      width: 400px;
-      height: 500px;
+      top: 30px;
+      right: 30px;
+      width: 330px;
+      max-height: 350px;
+      padding: 20px;
       overflow-y: auto;
     }
     .fixed-eval strong {
@@ -57,90 +56,112 @@
       text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
     }
 
-    /* Painel versão PRO */
+    /* Painel versão PRO (compacto) */
     .fixed-pro {
       position: fixed;
-      bottom: 40px;
-      right: 40px;
-      width: 400px;
-      min-height: 420px;
+      bottom: 30px;
+      right: 30px;
+      width: 300px;         /* menor */
+      min-height: 220px;    /* altura reduzida */
+      padding: 16px;        /* menos espaçamento interno */
       text-align: center;
+      background: rgba(10, 40, 70, 0.8);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+      border-radius: 18px;
+    }
+    .fixed-pro h3 {
+      margin-bottom: 10px;
+    }
+    .fixed-pro p {
+      font-size: 0.9rem;
+      line-height: 1.3rem;
     }
 
     /* Card central */
     .main-card {
-      position: absolute;
+      position: fixed;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 650px;
-      min-height: 450px;
+      width: 480px;
+      min-height: 480px;
+      padding: 30px;
       text-align: center;
     }
 
     /* Botões */
     .btn {
       display: inline-block;
-      padding: 20px 40px;
-      margin-top: 20px;
+      padding: 14px 24px;
+      margin-top: 15px;
       border: none;
-      border-radius: 14px;
-      font-size: 1.3rem;
+      border-radius: 12px;
+      font-size: 1.1rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .btn:hover {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .btn-free {
       background: #00e5ff;
       color: black;
-      box-shadow: 0 0 18px #00e5ff, 0 0 35px #00e5ff;
+      box-shadow: 0 0 12px #00e5ff, 0 0 25px #00e5ff;
     }
     .btn-free:hover {
       background: #00ffff;
-      box-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff;
+      box-shadow: 0 0 20px #00ffff, 0 0 35px #00ffff;
     }
 
     .btn-pro {
       background: #ffcc00;
       color: black;
-      box-shadow: 0 0 18px #ffcc00, 0 0 35px #ffcc00;
+      box-shadow: 0 0 12px #ffcc00, 0 0 25px #ffcc00;
     }
     .btn-pro:hover {
       background: #ffe066;
-      box-shadow: 0 0 30px #ffe066, 0 0 60px #ffe066;
+      box-shadow: 0 0 20px #ffe066, 0 0 35px #ffe066;
     }
 
-    /* Botão Suporte (desativado mas neon vermelho) */
-    .btn-support {
-      background: #ff3b3b;
-      color: white;
-      box-shadow: 0 0 18px #ff3b3b, 0 0 35px #ff3b3b;
+    .btn-disabled {
+      background: #444;
+      color: #aaa;
       cursor: not-allowed;
+      box-shadow: none;
       pointer-events: none;
     }
 
-    /* Botão Avaliar (desativado mas neon amarelo) */
-    .btn-avaliar {
-      background: #ffcc00;
-      color: black;
-      box-shadow: 0 0 18px #ffcc00, 0 0 35px #ffcc00;
-      cursor: not-allowed;
-      pointer-events: none;
+    /* Botão maior Free */
+    .big-btn {
+      font-size: 1.3rem;
+      padding: 18px 28px;
+      width: 90%;
+      max-width: 360px;
     }
 
     /* Popup Copiado */
     .popup {
-      margin-top: 15px;
-      font-size: 1.1rem;
-      color: #00ff99;
-      text-shadow: 0 0 10px #00ff99, 0 0 18px #00ff99;
-      display: none;
+      margin-top: 12px;
+      display: block;
+      text-align: center;
+      width: 100%;
+      background: rgba(0, 255, 150, 0.95);
+      color: black;
+      padding: 10px 16px;
+      border-radius: 12px;
       font-weight: bold;
+      font-size: 0.95rem;
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+    }
+    .popup.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     footer {
@@ -162,25 +183,26 @@
     <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
     <p>🛠️ Estado: Em desenvolvimento<br> 🐞 Bugs: Possíveis — reporte no suporte<br> 🧪 Uso: Fase de teste<br> ✍️ Autor: Jhon</p>
 
-    <button class="btn btn-support">📞 Suporte (Em desenvolvimento)</button>
-
-    <p style="margin-top:20px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
-    <button class="btn btn-avaliar">⭐ Avalie Aqui (Em manutenção)</button>
+    <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
+    <p style="margin-top:15px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
+    <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
 
   <!-- Card central -->
   <div class="main-card panel">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="200"><br>
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" 
+         alt="NeuroScript Logo" width="180"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
-    <button id="btn-free" class="btn btn-free">⚡ Obter Versão Free</button>
-    <p id="copy-msg" class="popup">✅ Copiado Script NeuroScript</p>
+    
+    <button id="btnFree" class="btn btn-free big-btn">⚡ Obter Versão Free</button>
+    <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
   </div>
 
   <!-- Painel avaliações -->
   <div class="fixed-eval panel">
     <h3>📢 Todas as Avaliações Nossas</h3>
-    <div id="avaliacoes"></div>
+    <div id="reviews"></div>
   </div>
 
   <!-- Painel PRO -->
@@ -188,10 +210,7 @@
     <h3>🚀 Versão PRO</h3>
     <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
     <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
-    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong></p>
-    <a href="https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server" target="_blank">
-      <button class="btn btn-pro">🔥 Obter Versão PRO</button>
-    </a>
+    <button id="btnPro" class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
   <!-- Rodapé -->
@@ -213,43 +232,70 @@
       }
     });
 
-    // Copiar script Free
-    const btnFree = document.getElementById("btn-free");
-    const copyMsg = document.getElementById("copy-msg");
-    btnFree.addEventListener("click", () => {
-      navigator.clipboard.writeText("SCRIPT_FREE_AQUI");
-      copyMsg.style.display = "block";
-      setTimeout(() => copyMsg.style.display = "none", 3000);
+    // Script Free - Copiar
+    document.getElementById("btnFree").addEventListener("click", () => {
+      const scriptFree = `-- NeuroScript Free
+print("⚡ NeuroScript Free carregado!")`;
+      navigator.clipboard.writeText(scriptFree).then(() => {
+        const popup = document.getElementById("popup");
+        popup.classList.add("show");
+        setTimeout(() => popup.classList.remove("show"), 2500);
+      });
     });
 
-    // Avaliações automáticas
-    const nomes = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana"];
-    const mensagens = [
-      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
-      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!"
+    // Botão PRO
+    document.getElementById("btnPro").addEventListener("click", () => {
+      window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
+    });
+
+    // Efeito mouse em todos paineis (inclusive central)
+    document.addEventListener("mousemove", e => {
+      const x = (window.innerWidth / 2 - e.pageX) / 50;
+      const y = (window.innerHeight / 2 - e.pageY) / 50;
+      document.querySelectorAll('.panel').forEach(panel => {
+        panel.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
+
+    // Avaliações dinâmicas
+    const names = [
+      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
+      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
+      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
+      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
+      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna",
+      "Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana",
+      "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
+      "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
+      "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
+      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"
     ];
-    const container = document.getElementById("avaliacoes");
+
+    const reviews = [
+      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
+      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
+      "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
+      "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
+      "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!",
+      "Facilita demais a vida!","Simplesmente incrível!","Funciona liso sem travar!",
+      "Me surpreendeu bastante!","Top qualidade!","Valeu muito a pena usar!","Melhor atualização até agora!",
+      "Rápido e sem complicação!","Confio de olhos fechados!"
+    ];
+
     function addReview() {
-      const nome = nomes[Math.floor(Math.random() * nomes.length)];
-      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+      const container = document.getElementById("reviews");
+      const name = names[Math.floor(Math.random() * names.length)];
+      const text = reviews[Math.floor(Math.random() * reviews.length)];
       const p = document.createElement("p");
-      p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
+      p.innerHTML = `<strong>${name}</strong>: ${text}`;
       container.prepend(p);
       if (container.childElementCount > 20) {
         container.removeChild(container.lastChild);
       }
     }
-    for (let i = 0; i < 10; i++) addReview();
-    setInterval(addReview, 3000);
 
-    // Efeito mouse em todos os paineis
-    document.querySelectorAll('.panel').forEach(panel => {
-      document.addEventListener("mousemove", e => {
-        const x = (window.innerWidth / 2 - e.pageX) / 50;
-        const y = (window.innerHeight / 2 - e.pageY) / 50;
-        panel.style.transform = `translate(${x}px, ${y}px)`;
-      });
-    });
+    for (let i = 0; i < 6; i++) addReview();
+    setInterval(addReview, 3000);
   </script>
 </body>
 </html>
