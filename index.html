@@ -26,9 +26,9 @@
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: rgba(10, 40, 70, 0.8); /* azul escuro translúcido */
+      background: rgba(10, 30, 55, 0.9); /* azul escuro translúcido */
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-      border-radius: 20px;
+      border-radius: 18px;
       transition: transform 0.3s ease;
     }
 
@@ -37,8 +37,8 @@
       position: fixed;
       top: 30px;
       left: 30px;
-      width: 330px;
-      padding: 20px;
+      width: 300px;
+      padding: 18px;
     }
 
     /* Painel avaliações */
@@ -46,14 +46,14 @@
       position: fixed;
       top: 30px;
       right: 30px;
-      width: 330px;
-      max-height: 350px;
-      padding: 20px;
+      width: 300px;
+      max-height: 330px;
+      padding: 18px;
       overflow-y: auto;
     }
     .fixed-eval strong {
       color: #00ffff;
-      text-shadow: 0 0 8px #00ffff, 0 0 15px #00ffff;
+      text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff;
     }
 
     /* Painel versão PRO */
@@ -61,19 +61,16 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 300px;         
-      min-height: 220px;    
-      padding: 16px;        
+      width: 280px;
+      min-height: 220px;
+      padding: 14px;
       text-align: center;
-      background: rgba(10, 40, 70, 0.8);
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-      border-radius: 18px;
     }
     .fixed-pro h3 {
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .fixed-pro p {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.3rem;
     }
 
@@ -83,9 +80,9 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 500px;
-      min-height: 500px;
-      padding: 30px;
+      width: 420px;
+      min-height: 420px;
+      padding: 24px;
       text-align: center;
     }
 
@@ -93,7 +90,7 @@
     .btn {
       display: inline-block;
       padding: 14px 24px;
-      margin-top: 15px;
+      margin-top: 12px;
       border: none;
       border-radius: 12px;
       font-size: 1.1rem;
@@ -109,21 +106,21 @@
     .btn-free {
       background: #00e5ff;
       color: black;
-      box-shadow: 0 0 12px #00e5ff, 0 0 25px #00e5ff;
+      box-shadow: 0 0 10px #00e5ff, 0 0 20px #00e5ff;
     }
     .btn-free:hover {
       background: #00ffff;
-      box-shadow: 0 0 20px #00ffff, 0 0 35px #00ffff;
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff;
     }
 
     .btn-pro {
       background: #ffcc00;
       color: black;
-      box-shadow: 0 0 12px #ffcc00, 0 0 25px #ffcc00;
+      box-shadow: 0 0 10px #ffcc00, 0 0 20px #ffcc00;
     }
     .btn-pro:hover {
       background: #ffe066;
-      box-shadow: 0 0 20px #ffe066, 0 0 35px #ffe066;
+      box-shadow: 0 0 15px #ffe066, 0 0 30px #ffe066;
     }
 
     .btn-disabled {
@@ -137,27 +134,26 @@
     /* Botão maior Free */
     .big-btn {
       font-size: 1.3rem;
-      padding: 18px 28px;
+      padding: 16px 26px;
       width: 90%;
-      max-width: 360px;
+      max-width: 340px;
     }
 
     /* Popup Copiado */
     .popup {
-      margin-top: 12px;
-      display: block;
+      margin-top: 8px;
+      display: inline-block;
       text-align: center;
-      width: 100%;
       background: rgba(0, 255, 150, 0.95);
       color: black;
-      padding: 10px 16px;
-      border-radius: 12px;
+      padding: 6px 12px;
+      border-radius: 8px;
       font-weight: bold;
-      font-size: 0.95rem;
-      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
+      font-size: 0.85rem;
+      box-shadow: 0 0 8px #00ffcc, 0 0 18px #00ffcc;
       opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.5s ease;
+      transform: translateY(5px);
+      transition: all 0.4s ease;
     }
     .popup.show {
       opacity: 1;
@@ -169,7 +165,7 @@
       bottom: 10px;
       width: 100%;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #bbb;
     }
   </style>
@@ -177,41 +173,15 @@
 <body>
   <div id="particles-js"></div>
 
-  <!-- Painel esquerdo -->
-  <div class="fixed-announcement panel">
-    <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
-    <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
-    <p>🛠️ Estado: Em desenvolvimento<br> 🐞 Bugs: Possíveis — reporte no suporte<br> 🧪 Uso: Fase de teste<br> ✍️ Autor: Jhon</p>
-
-    <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
-    <p style="margin-top:15px;">⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e trazer novas atualizações 🚀</p>
-    <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
-  </div>
-
   <!-- Card central -->
   <div class="main-card panel">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" 
-         alt="NeuroScript Logo" width="180"><br>
+         alt="NeuroScript Logo" width="160"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     
     <button id="btnFree" class="btn btn-free big-btn">⚡ Obter Versão Free</button>
     <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
-  </div>
-
-  <!-- Painel avaliações -->
-  <div class="fixed-eval panel">
-    <h3>📢 Todas as Avaliações Nossas</h3>
-    <div id="reviews"></div>
-  </div>
-
-  <!-- Painel PRO -->
-  <div class="fixed-pro panel">
-    <h3>🚀 Versão PRO</h3>
-    <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
-    <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
-    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong></p>
-    <button id="btnPro" class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
   <!-- Rodapé -->
@@ -240,16 +210,11 @@ print("⚡ NeuroScript Free carregado!")`;
       navigator.clipboard.writeText(scriptFree).then(() => {
         const popup = document.getElementById("popup");
         popup.classList.add("show");
-        setTimeout(() => popup.classList.remove("show"), 2500);
+        setTimeout(() => popup.classList.remove("show"), 2000);
       });
     });
 
-    // Botão PRO
-    document.getElementById("btnPro").addEventListener("click", () => {
-      window.location.href = "https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server";
-    });
-
-    // Efeito mouse nos paineis
+    // Movimento dos painéis
     document.addEventListener("mousemove", e => {
       const x = (window.innerWidth / 2 - e.pageX) / 50;
       const y = (window.innerHeight / 2 - e.pageY) / 50;
@@ -262,46 +227,6 @@ print("⚡ NeuroScript Free carregado!")`;
         }
       });
     });
-
-    // Avaliações dinâmicas
-    const names = [
-      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
-      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
-      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
-      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
-      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna",
-      "Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana",
-      "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
-      "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
-      "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
-      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"
-    ];
-
-    const reviews = [
-      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
-      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
-      "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
-      "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
-      "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!",
-      "Facilita demais a vida!","Simplesmente incrível!","Funciona liso sem travar!",
-      "Me surpreendeu bastante!","Top qualidade!","Valeu muito a pena usar!","Melhor atualização até agora!",
-      "Rápido e sem complicação!","Confio de olhos fechados!"
-    ];
-
-    function addReview() {
-      const container = document.getElementById("reviews");
-      const name = names[Math.floor(Math.random() * names.length)];
-      const text = reviews[Math.floor(Math.random() * reviews.length)];
-      const p = document.createElement("p");
-      p.innerHTML = `<strong>${name}</strong>: ${text}`;
-      container.prepend(p);
-      if (container.childElementCount > 20) {
-        container.removeChild(container.lastChild);
-      }
-    }
-
-    for (let i = 0; i < 6; i++) addReview();
-    setInterval(addReview, 3000);
   </script>
 </body>
 </html>
