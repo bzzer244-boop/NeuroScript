@@ -21,14 +21,14 @@
       background: #061726;
     }
 
-    /* Painéis gerais */
+    /* Painéis */
     .fixed-announcement,
     .fixed-eval,
     .fixed-pro,
     .main-card {
       background: rgba(10, 30, 55, 0.9);
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
-      border-radius: 18px;
+      border-radius: 20px;
       transition: transform 0.3s ease;
     }
 
@@ -37,8 +37,8 @@
       position: fixed;
       top: 30px;
       left: 30px;
-      width: 300px;
-      padding: 18px;
+      width: 330px;
+      padding: 20px;
     }
 
     /* Painel avaliações */
@@ -46,9 +46,9 @@
       position: fixed;
       top: 30px;
       right: 30px;
-      width: 300px;
-      max-height: 330px;
-      padding: 18px;
+      width: 330px;
+      max-height: 350px;
+      padding: 20px;
       overflow-y: auto;
     }
     .fixed-eval strong {
@@ -61,17 +61,10 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      width: 260px;
-      min-height: 200px;
-      padding: 14px;
+      width: 330px;
+      min-height: 300px;
+      padding: 20px;
       text-align: center;
-    }
-    .fixed-pro h3 {
-      margin-bottom: 10px;
-    }
-    .fixed-pro p {
-      font-size: 0.9rem;
-      line-height: 1.3rem;
     }
 
     /* Card central */
@@ -175,7 +168,7 @@
 
   <!-- Painel Aviso -->
   <div class="fixed-announcement panel">
-    <h3>⚡ Aviso sobre o NeuroScript</h3>
+    <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
     <p>
       Rapaziada que está apoiando o <b>NeuroScript</b>, muito obrigado pelo suporte!  
       O script está em desenvolvimento e pode apresentar alguns bugs.
@@ -189,19 +182,17 @@
   <!-- Painel Avaliações -->
   <div class="fixed-eval panel">
     <h3>📢 Todas as Avaliações</h3>
-    <p><strong>Arthur:</strong> Muito prático de usar!</p>
-    <p><strong>Thiago:</strong> Melhor script que já testei!</p>
-    <p><strong>Caio:</strong> Gostei bastante!</p>
-    <p><strong>Larissa:</strong> Valeu muito a pena usar!</p>
+    <div id="reviews"></div>
   </div>
 
   <!-- Painel PRO -->
   <div class="fixed-pro panel">
     <h3>🚀 Versão PRO</h3>
     <p>
-      🔹 Free: Teleporte, Auto Collect e mais.<br>
-      🔹 PRO: Tudo do Free + recursos extras!
+      🆓 <b>Free</b>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.<br><br>
+      💎 <b>PRO</b>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.
     </p>
+    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <b>distribuindo a versão PRO para vocês!</b></p>
     <button class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
@@ -259,6 +250,46 @@ print("⚡ NeuroScript Free carregado!")`;
         }
       });
     });
+
+    // Avaliações dinâmicas
+    const names = [
+      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
+      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
+      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
+      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
+      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna",
+      "Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana",
+      "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
+      "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
+      "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
+      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"
+    ];
+
+    const reviews = [
+      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
+      "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
+      "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
+      "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
+      "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!",
+      "Facilita demais a vida!","Simplesmente incrível!","Funciona liso sem travar!",
+      "Me surpreendeu bastante!","Top qualidade!","Valeu muito a pena usar!","Melhor atualização até agora!",
+      "Rápido e sem complicação!","Confio de olhos fechados!"
+    ];
+
+    function addReview() {
+      const container = document.getElementById("reviews");
+      const name = names[Math.floor(Math.random() * names.length)];
+      const text = reviews[Math.floor(Math.random() * reviews.length)];
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${name}</strong>: ${text}`;
+      container.prepend(p);
+      if (container.childElementCount > 20) {
+        container.removeChild(container.lastChild);
+      }
+    }
+
+    for (let i = 0; i < 6; i++) addReview();
+    setInterval(addReview, 3000);
   </script>
 </body>
 </html>
