@@ -10,6 +10,10 @@
       background: #0a0f1c;
       color: white;
       overflow: hidden;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Fundo partículas */
@@ -21,6 +25,14 @@
       background: #0a0f1c;
     }
 
+    /* Painel base */
+    .panel {
+      background: rgba(0, 20, 40, 0.9);
+      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
+      border-radius: 20px;
+      transition: transform 0.2s ease;
+    }
+
     /* Painel de anúncio */
     .fixed-announcement {
       position: fixed;
@@ -30,10 +42,7 @@
       min-height: 500px;
       font-size: 0.95rem;
       padding: 20px;
-      border-radius: 20px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
     }
 
     /* Painel avaliações */
@@ -45,11 +54,8 @@
       max-height: 320px;
       font-size: 1rem;
       padding: 18px;
-      border-radius: 20px;
       text-align: left;
       overflow-y: auto;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
     }
 
     .fixed-eval strong {
@@ -57,7 +63,7 @@
       text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
     }
 
-    /* Painel PRO */
+    /* Painel versão PRO */
     .fixed-pro {
       position: fixed;
       bottom: 20px;
@@ -66,23 +72,15 @@
       min-height: 350px;
       font-size: 1rem;
       padding: 20px;
-      border-radius: 20px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
     }
 
     /* Card central */
     .main-card {
-      margin: auto;
-      margin-top: 60px;
       width: clamp(450px, 50vw, 750px);
       min-height: 340px;
       padding: 30px;
-      border-radius: 24px;
       text-align: center;
-      background: rgba(0, 0, 0, 0.7);
-      box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
     }
 
     /* Botões */
@@ -121,17 +119,17 @@
       box-shadow: 0 0 25px #ffe066, 0 0 50px #ffe066;
     }
 
-    /* Botões desativados corrigidos */
+    /* Botões desativados */
     .btn-disabled-red {
       background: #330000;
-      color: white;
+      color: #fff;
       cursor: not-allowed;
       box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
       pointer-events: none;
     }
     .btn-disabled-yellow {
       background: #332b00;
-      color: white;
+      color: #fff;
       cursor: not-allowed;
       box-shadow: 0 0 15px #ffea00, 0 0 30px #ffea00;
       pointer-events: none;
@@ -150,14 +148,21 @@
     /* Popup de cópia */
     .popup {
       margin-top: 10px;
-      background: rgba(0, 255, 150, 0.9);
+      background: rgba(0, 255, 150, 0.95);
       color: black;
       padding: 8px 16px;
       border-radius: 10px;
       font-weight: bold;
       font-size: 0.9rem;
       box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
-      display: none;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.5s ease;
+      display: inline-block;
+    }
+    .popup.show {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
@@ -165,7 +170,7 @@
   <div id="particles-js"></div>
 
   <!-- Painel esquerdo -->
-  <div class="fixed-announcement">
+  <div class="fixed-announcement panel">
     <h2>⚡ Aviso sobre o NeuroScript</h2>
     <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
     <p>🛠️ Estado: Em desenvolvimento<br>
@@ -178,7 +183,7 @@
   </div>
 
   <!-- Card central -->
-  <div class="main-card">
+  <div class="main-card panel">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="160"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
@@ -187,13 +192,13 @@
   </div>
 
   <!-- Painel avaliações -->
-  <div class="fixed-eval">
+  <div class="fixed-eval panel">
     <h3>⭐ Todas as Avaliações Nossas</h3>
     <div id="reviews"></div>
   </div>
 
   <!-- Painel PRO -->
-  <div class="fixed-pro">
+  <div class="fixed-pro panel">
     <h3>🚀 Versão PRO</h3>
     <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
     <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
@@ -206,7 +211,7 @@
     © 2025 NeuroScript. Todos os direitos reservados.
   </footer>
 
-  <!-- Partículas -->
+  <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <script>
     particlesJS("particles-js", {
@@ -226,8 +231,8 @@
 print("⚡ NeuroScript Free carregado!")`;
       navigator.clipboard.writeText(scriptFree).then(() => {
         const popup = document.getElementById("popup");
-        popup.style.display = "block";
-        setTimeout(() => { popup.style.display = "none"; }, 2500);
+        popup.classList.add("show");
+        setTimeout(() => { popup.classList.remove("show"); }, 2500);
       });
     });
 
@@ -254,6 +259,15 @@ print("⚡ NeuroScript Free carregado!")`;
 
     for (let i = 0; i < 6; i++) addReview();
     setInterval(addReview, 3000);
+
+    // Parallax com o mouse
+    document.addEventListener("mousemove", (e) => {
+      const x = (window.innerWidth / 2 - e.pageX) / 50;
+      const y = (window.innerHeight / 2 - e.pageY) / 50;
+      document.querySelectorAll(".panel, .main-card").forEach(el => {
+        el.style.transform = `translate(${x}px, ${y}px)`;
+      });
+    });
   </script>
 </body>
 </html>
