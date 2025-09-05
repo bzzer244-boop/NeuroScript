@@ -1,428 +1,230 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NeuroScript — Obter Script</title>
-
-<!-- Open Graph -->
-<meta property="og:title" content="NeuroScript — Obter Script">
-<meta property="og:description" content="Script em desenvolvimento, confira aqui!">
-<meta property="og:image" content="https://bzzer244-boop.github.io/NeuroScript/Desemvolviment.png">
-<meta property="og:url" content="https://bzzer244-boop.github.io/NeuroScript/">
-<meta property="og:type" content="website">
-
-<!-- Twitter -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="NeuroScript — Obter Script">
-<meta name="twitter:description" content="Script em desenvolvimento, confira aqui!">
-<meta name="twitter:image" content="https://bzzer244-boop.github.io/NeuroScript/Desemvolviment.png">
-
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-  body {
-    margin: 0;
-    font-family: sans-serif;
-    overflow-x: hidden;
-    background: #020617;
-    color: #f0f0f0;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  /* Fundo tecnológico */
-  #bgCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  .glass {
-    background: rgba(255,255,255,0.05);
-    backdrop-filter: blur(8px);
-  }
-
-  .neon-glow {
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    animation: neonPulse 3s infinite alternate;
-  }
-
-  @keyframes neonPulse {
-    0% {
-      box-shadow: 0 0 4px rgba(0, 255, 255, 0.5),
-                  0 0 8px rgba(0, 255, 255, 0.3),
-                  0 0 12px rgba(0, 255, 255, 0.2);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeuroScript</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0a0f1c;
+      color: #fff;
+      overflow-x: hidden;
     }
-    100% {
-      box-shadow: 0 0 10px rgba(0, 255, 255, 0.6),
-                  0 0 20px rgba(0, 255, 255, 0.4),
-                  0 0 25px rgba(0, 255, 255, 0.2);
+
+    /* Neon partículas */
+    .particles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      background: transparent;
+      overflow: hidden;
     }
-  }
+    .particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: #00eaff;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: float 10s infinite linear;
+    }
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-100vh); }
+    }
 
-/* Painel de anúncio (esquerda) */
-.fixed-announcement {
-  position: fixed;
-  top: 30px;
-  left: 30px;
-  width: 360px;
-  min-height: 600px;
-  max-height: 700px;
-  font-size: 1rem;
-  padding: 28px;
-  border-radius: 24px;
-  z-index: 50;
-  text-align: center;
+    /* Caixas principais */
+    .fixed-announcement, .fixed-eval, .fixed-pro, .main-box {
+      background: #111a2b;
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: 0 0 25px #00eaff70;
+      position: fixed;
+      z-index: 10;
+    }
 
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .fixed-announcement {
+      top: 30px;
+      left: 30px;
+      width: 360px;
+      min-height: 800px;
+      font-size: clamp(1rem, 1.3vw, 1.2rem);
+      text-align: center;
+    }
 
-/* Painel de avaliações (direita, topo) */
-.fixed-eval {
-  position: fixed;
-  top: 30px;
-  right: 30px;
-  width: 360px;
-  max-height: 350px;
-  font-size: 0.95rem;
-  padding: 20px;
-  border-radius: 22px;
-  z-index: 50;
-  text-align: left;
-  overflow-y: auto;
-}
+    .fixed-eval {
+      top: 30px;
+      right: 30px;
+      width: 360px;
+      max-height: 450px;
+      overflow-y: auto;
+      font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+    }
 
-.fixed-pro {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 380px;
-  min-height: 460px;
-  padding: 28px;
-  border-radius: 24px;
-  text-align: left;
-  font-size: 1rem;
-  line-height: 1.6;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
+    .fixed-pro {
+      bottom: 30px;
+      right: 30px;
+      width: 360px;
+      min-height: 450px;
+      font-size: clamp(1rem, 1.2vw, 1.2rem);
+      text-align: center;
+    }
 
-/* Título */
-.fixed-pro h2 {
-  text-align: center;
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-  color: #fff;
-}
+    .main-box {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      text-align: center;
+      padding: 40px;
+    }
 
-/* Lista de recursos */
-.fixed-pro ul {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 16px 0;
-}
-.fixed-pro ul li {
-  margin: 10px 0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1rem;
-}
-.fixed-pro ul li span {
-  font-weight: bold;
-}
+    h2 {
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+      margin-bottom: 15px;
+    }
 
-/* Texto de aviso */
-.fixed-pro .notice {
-  background: rgba(255, 200, 50, 0.1);
-  padding: 10px 12px;
-  border-radius: 12px;
-  font-size: 0.95rem;
-  margin: 16px 0;
-  line-height: 1.4;
-}
+    /* Botões */
+    .btn {
+      display: inline-block;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      margin-top: 12px;
+      text-decoration: none;
+    }
+    .btn:hover { transform: scale(1.05); }
 
-/* Botão Versão PRO */
-.fixed-pro button {
-  background: linear-gradient(90deg, #ffcc00, #ff9900);
-  border: none;
-  color: #111;
-  font-size: 1.1rem;
-  font-weight: bold;
-  padding: 14px 20px;
-  border-radius: 14px;
-  cursor: pointer;
-  transition: 0.3s ease-in-out;
-  box-shadow: 0 0 15px #ffcc00aa, 0 0 30px #ff9900aa;
-}
-.fixed-pro button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px #ffcc00, 0 0 40px #ff9900;
-}
+    .support-btn {
+      background: #e53935;
+      color: #fff;
+      box-shadow: 0 0 10px #e53935aa;
+    }
+    .support-btn:hover {
+      box-shadow: 0 0 20px #ff4444, 0 0 30px #ff4444aa;
+    }
 
+    .eval-btn {
+      background: #1e88e5;
+      color: #fff;
+      box-shadow: 0 0 10px #1e88e5aa;
+    }
+    .eval-btn:hover {
+      box-shadow: 0 0 20px #3399ff, 0 0 30px #3399ffaa;
+    }
 
-/* Card central (Obter NeuroScript) */
-.main-card {
-  margin: auto;
-  width: clamp(500px, 55vw, 800px);
-  min-height: 400px;
-  padding: 40px;
-  border-radius: 28px;
-  text-align: center;
-}
+    .free-btn {
+      background: linear-gradient(90deg, #00ffcc, #00ccff);
+      color: #111;
+      box-shadow: 0 0 15px #00eaffaa, 0 0 30px #00eaffaa;
+    }
+    .free-btn:hover {
+      box-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+    }
 
-/* Títulos */
-h1, h2 {
-  margin-bottom: 12px;
-  line-height: 1.3;
-}
-h1 {
-  font-size: 1.8rem;
-}
-h2 {
-  font-size: 1.4rem;
-}
+    .pro-btn {
+      background: #ffb300;
+      color: #111;
+      box-shadow: 0 0 15px #ffb300aa, 0 0 30px #ffb300aa;
+    }
+    .pro-btn:hover {
+      box-shadow: 0 0 20px #ffcc00, 0 0 40px #ffcc00;
+    }
 
-/* Texto geral */
-p, li, div {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+    /* Avaliações */
+    .fixed-eval h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .fixed-eval p {
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+    .fixed-eval strong {
+      color: #00eaff;
+      text-shadow: 0 0 6px #00eaff, 0 0 12px #00aaff;
+    }
 
-  main {
-    width: 100%;
-    max-width: 600px;
-    padding: 20px;
-    text-align: center;
-    z-index: 40;
-  }
+    /* Texto Free/Pro */
+    .fixed-pro .features {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 18px;
+      text-align: left;
+    }
+    .fixed-pro .features span {
+      font-weight: bold;
+      color: #00eaff;
+    }
 
-  img.logo {
-    max-width: 200px;
-    margin: 0 auto 20px auto;
-    display: block;
-    border-radius: 12px;
-  }
-
-  .parallax {
-    transition: transform 0.15s ease-out;
-  }
-
-  /* Botões padrão */
-  .btn {
-    display: inline-block;
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    font-weight: bold;
-    text-align: center;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  }
-  .btn:hover {
-    transform: scale(1.05);
-  }
-
-  .btn-purple {
-    background: linear-gradient(to right, #9333ea, #7e22ce);
-    color: white;
-  }
-  .btn-purple:hover {
-    background: linear-gradient(to right, #7e22ce, #6b21a8);
-  }
-
-  .btn-green {
-    background: linear-gradient(to right, #22c55e, #16a34a);
-    color: white;
-  }
-  .btn-green:hover {
-    background: linear-gradient(to right, #16a34a, #15803d);
-  }
-
-  .btn-yellow {
-    background: linear-gradient(to right, #facc15, #eab308);
-    color: black;
-  }
-  .btn-yellow:hover {
-    background: linear-gradient(to right, #eab308, #ca8a04);
-  }
-
-  .btn-red {
-    background: linear-gradient(to right, #ef4444, #b91c1c);
-    color: white;
-    cursor: not-allowed;
-    opacity: 0.8;
-  }
-
-  .btn-blue {
-    background: linear-gradient(to right, #3b82f6, #1d4ed8);
-    color: white;
-    cursor: not-allowed;
-    opacity: 0.8;
-  }
-</style>
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      margin-top: 20px;
+      color: #888;
+    }
+  </style>
 </head>
 <body>
-
-<canvas id="bgCanvas"></canvas>
-
-<!-- Painel de anúncio -->
-<section class="fixed-announcement glass parallax neon-glow">
-  <div class="text-4xl mb-3">⚡🤖</div>
-  <h2 class="font-bold text-xl mb-2">Aviso sobre o NeuroScript</h2>
-  <p class="text-sm leading-relaxed">
-    Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte!  
-    O script está em desenvolvimento e pode apresentar alguns bugs.
-  </p>
-  <ul class="mt-4 text-sm space-y-1 text-left">
-    <li>⚙️ Estado: Em desenvolvimento</li>
-    <li>🐞 Bugs: Possíveis — reporte no suporte</li>
-    <li>🌱 Uso: Fase de teste</li>
-    <li>✍️ Autor: Jhon</li>
-  </ul>
-  <button class="btn btn-red mt-5">🛠️ Suporte (Em desenvolvimento)</button>
-  <p class="mt-5 text-sm text-slate-300 leading-relaxed">
-    ⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente, com bom resultado, e podemos continuar trazendo atualizações regularmente.
-  </p>
-  <button class="btn btn-blue mt-3">⭐ Avalie Aqui (Em manutenção)</button>
-</section>
-
-<!-- Painel avaliações -->
-<section class="fixed-eval glass parallax neon-glow">
-  <h2 class="font-bold text-lg mb-3">📢 Todas as Avaliações Nossas</h2>
-  <div id="reviews" class="space-y-2 text-sm"></div>
-</section>
-
-<!-- Painel Pro -->
-<section class="fixed-pro glass parallax neon-glow">
-  <h2 class="font-bold text-lg mb-3">🚀 Versão PRO</h2>
-  <p class="text-xs text-slate-300 mb-3 leading-relaxed text-left">
-    🆓 <strong>Free:</strong> ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.  
-    <br><br>
-    💎 <strong>PRO:</strong> Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.  
-    <br><br>
-    Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong>
-  </p>
-  <button id="proBtn" class="btn btn-yellow">🔥 Obter Versão PRO</button>
-</section>
-
-<!-- Menu central -->
-<main class="glass rounded-2xl p-6 shadow-2xl border border-white/5 parallax neon-glow">
-  <!-- Logo -->
-  <div class="flex justify-center mb-6">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="" class="logo">
+  <!-- Partículas -->
+  <div class="particles">
+    <div class="particle" style="top:80%; left:10%"></div>
+    <div class="particle" style="top:50%; left:50%"></div>
+    <div class="particle" style="top:30%; left:70%"></div>
   </div>
 
-  <!-- Título -->
-  <h1 class="text-2xl md:text-3xl font-bold mb-6">⚡🤖 Obter NeuroScript</h1>
-  <p class="text-slate-300 mb-6 text-sm md:text-base">
-    Clique no botão abaixo para copiar o script da versão Free.
-  </p>
-  <button id="getScriptBtn" class="btn btn-green">⚡ Obter Versão Free</button>
-  <div class="mt-6 text-xs md:text-sm text-slate-400">
-    🔒 Copiar direto — não é possível visualizar
+  <!-- Aviso -->
+  <div class="fixed-announcement">
+    <h2>⚡🤖 Aviso sobre o NeuroScript</h2>
+    <p>Rapaziada que está apoiando o <b>NeuroScript</b>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
+    <p>⚙️ <b>Estado:</b> Em desenvolvimento</p>
+    <p>🐞 <b>Bugs:</b> Possíveis — reporte no suporte</p>
+    <p>🧪 <b>Uso:</b> Fase de teste</p>
+    <p>✍️ <b>Autor:</b> Jhon</p>
+
+    <a class="btn support-btn">🛠️ Suporte (Em desenvolvimento)</a>
+
+    <p>⭐ Avalie aqui se você gostar do nosso script! Assim podemos saber se nosso trabalho está eficiente e continuar trazendo atualizações.</p>
+    <a class="btn eval-btn">⭐ Avalie Aqui (Em manutenção)</a>
   </div>
-  <p id="copyMsg" class="hidden mt-4 text-green-400 font-semibold">✅ Script copiado com sucesso!</p>
-</main>
 
-<footer class="mt-8 text-slate-500 text-xs md:text-sm">
-  © 2025 NeuroScript. Todos os direitos reservados.
-</footer>
+  <!-- Avaliações -->
+  <div class="fixed-eval">
+    <h2>📢 Todas as Avaliações Nossas</h2>
+    <p><strong>Lucas:</strong> Gostei bastante!</p>
+    <p><strong>Beatriz:</strong> Sem bugs até agora!</p>
+    <p><strong>João:</strong> Ótimo desempenho!</p>
+    <p><strong>Sofia:</strong> Recomendo demais!</p>
+  </div>
 
-<script>
-  // Script Free que será copiado
-  const scriptFree = `print("NeuroScript Free Ativado!")`;
+  <!-- Central -->
+  <div class="main-box">
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/Desemvolviment.png" width="200" alt="Logo NeuroScript">
+    <h2>⚡🤖 Obter NeuroScript</h2>
+    <p>Clique no botão abaixo para copiar o script da versão Free.</p>
+    <a class="btn free-btn">⚡ Obter Versão Free</a>
+    <p>🔒 Copiar direto — não é possível visualizar</p>
+  </div>
 
-  // Botão Free
-  const getScriptBtn = document.getElementById('getScriptBtn');
-  const copyMsg = document.getElementById('copyMsg');
-  getScriptBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(scriptFree).then(() => {
-      copyMsg.classList.remove('hidden');
-      setTimeout(() => copyMsg.classList.add('hidden'), 3000);
-    });
-  });
+  <!-- PRO -->
+  <div class="fixed-pro">
+    <h2>🚀 Versão PRO</h2>
+    <div class="features">
+      🆓 <span>Free:</span> ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.<br><br>
+      💎 <span>PRO:</span> Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.
+    </div>
+    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <b>distribuindo a versão PRO para vocês!</b></p>
+    <a class="btn pro-btn">🔥 Obter Versão PRO</a>
+  </div>
 
-  // Botão PRO
-  const proBtn = document.getElementById('proBtn');
-  proBtn.addEventListener('click', () => {
-    window.open("https://www.roblox.com/share?code=7cd7b03525cdea46b09982f3ee4d1617&type=Server", "_blank");
-  });
-
-  // Avaliações automáticas
-  const reviewsEl = document.getElementById("reviews");
-  const names = ["Lucas", "Mariana", "Pedro", "Ana", "Rafa", "Gabriel", "Sofia", "Thiago", "Beatriz", "João"];
-  const messages = [
-    "Script muito bom!", "Funciona perfeito!", "Recomendo demais!", "Valeu cada segundo!", "Top demais!", 
-    "Sem bugs até agora!", "Gostei bastante!", "Simples e eficiente!", "Faz o que promete!", "Ótimo desempenho!"
-  ];
-  function addReview(){
-    const name = names[Math.floor(Math.random()*names.length)];
-    const msg = messages[Math.floor(Math.random()*messages.length)];
-    const div = document.createElement("div");
-    div.textContent = `${name}: ${msg}`;
-    reviewsEl.prepend(div);
-  }
-  setInterval(addReview, 2000);
-
-  // Parallax
-  const parallaxElems = document.querySelectorAll('.parallax');
-  document.addEventListener('mousemove', e => {
-    const x = (e.clientX / window.innerWidth - 0.5) * 20;
-    const y = (e.clientY / window.innerHeight - 0.5) * 20;
-    parallaxElems.forEach(el => el.style.transform = `translate(${x}px, ${y}px)`);
-  });
-
-  // Fundo partículas CIANO
-  const canvas = document.getElementById('bgCanvas');
-  const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  const particles = [];
-  const particleCount = 80;
-  const color = 'rgba(0,255,255,0.7)'; // apenas ciano neon
-
-  class Particle {
-    constructor(){
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.radius = Math.random() * 2 + 1;
-      this.speedX = (Math.random() - 0.5) * 0.3;
-      this.speedY = (Math.random() - 0.5) * 0.3;
-      this.color = color;
-    }
-    update(){
-      this.x += this.speedX;
-      this.y += this.speedY;
-      if(this.x < 0) this.x = canvas.width;
-      if(this.x > canvas.width) this.x = 0;
-      if(this.y < 0) this.y = canvas.height;
-      if(this.y > canvas.height) this.y = 0;
-    }
-    draw(){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.radius, 0, Math.PI*2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    }
-  }
-  for(let i=0;i<particleCount;i++){ particles.push(new Particle()); }
-  function animate(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    particles.forEach(p=>{ p.update(); p.draw(); });
-    requestAnimationFrame(animate);
-  }
-  animate();
-</script>
-
+  <footer>© 2025 NeuroScript. Todos os direitos reservados.</footer>
 </body>
 </html>
