@@ -24,13 +24,13 @@
     /* Painel de anúncio */
     .fixed-announcement {
       position: fixed;
-      top: 30px;
-      left: 30px;
-      width: 360px;
-      min-height: 600px;
-      font-size: 1rem;
-      padding: 28px;
-      border-radius: 24px;
+      top: 20px;
+      left: 20px;
+      width: 320px;
+      min-height: 500px;
+      font-size: 0.95rem;
+      padding: 20px;
+      border-radius: 20px;
       text-align: center;
       background: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
@@ -39,13 +39,13 @@
     /* Painel avaliações */
     .fixed-eval {
       position: fixed;
-      top: 30px;
-      right: 30px;
-      width: 360px;
-      max-height: 350px;
+      top: 20px;
+      right: 20px;
+      width: 340px;
+      max-height: 320px;
       font-size: 1rem;
-      padding: 20px;
-      border-radius: 22px;
+      padding: 18px;
+      border-radius: 20px;
       text-align: left;
       overflow-y: auto;
       background: rgba(0, 0, 0, 0.7);
@@ -60,13 +60,13 @@
     /* Painel PRO */
     .fixed-pro {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 360px;
-      min-height: 400px;
-      font-size: 1.05rem;
-      padding: 24px;
-      border-radius: 22px;
+      bottom: 20px;
+      right: 20px;
+      width: 340px;
+      min-height: 350px;
+      font-size: 1rem;
+      padding: 20px;
+      border-radius: 20px;
       text-align: center;
       background: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
@@ -75,11 +75,11 @@
     /* Card central */
     .main-card {
       margin: auto;
-      margin-top: 80px;
-      width: clamp(500px, 55vw, 800px);
-      min-height: 400px;
-      padding: 40px;
-      border-radius: 28px;
+      margin-top: 60px;
+      width: clamp(450px, 50vw, 750px);
+      min-height: 340px;
+      padding: 30px;
+      border-radius: 24px;
       text-align: center;
       background: rgba(0, 0, 0, 0.7);
       box-shadow: 0 0 25px rgba(0, 255, 255, 0.8);
@@ -88,11 +88,11 @@
     /* Botões */
     .btn {
       display: inline-block;
-      padding: 14px 24px;
-      margin-top: 20px;
+      padding: 12px 22px;
+      margin-top: 16px;
       border: none;
       border-radius: 12px;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
@@ -121,17 +121,17 @@
       box-shadow: 0 0 25px #ffe066, 0 0 50px #ffe066;
     }
 
-    /* Botões desativados */
+    /* Botões desativados corrigidos */
     .btn-disabled-red {
-      background: #800000;
-      color: #ff4d4d;
+      background: #330000;
+      color: white;
       cursor: not-allowed;
       box-shadow: 0 0 15px #ff0000, 0 0 30px #ff0000;
       pointer-events: none;
     }
     .btn-disabled-yellow {
-      background: #665500;
-      color: #ffea00;
+      background: #332b00;
+      color: white;
       cursor: not-allowed;
       box-shadow: 0 0 15px #ffea00, 0 0 30px #ffea00;
       pointer-events: none;
@@ -143,33 +143,26 @@
       bottom: 10px;
       width: 100%;
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       color: #bbb;
     }
 
     /* Popup de cópia */
     .popup {
-      position: fixed;
-      top: 20px;
-      left: 50%;
-      transform: translateX(-50%);
+      margin-top: 10px;
       background: rgba(0, 255, 150, 0.9);
       color: black;
-      padding: 12px 24px;
-      border-radius: 12px;
+      padding: 8px 16px;
+      border-radius: 10px;
       font-weight: bold;
-      font-size: 1rem;
-      box-shadow: 0 0 20px #00ffcc, 0 0 40px #00ffcc;
+      font-size: 0.9rem;
+      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
       display: none;
-      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <div id="particles-js"></div>
-
-  <!-- Popup -->
-  <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
 
   <!-- Painel esquerdo -->
   <div class="fixed-announcement">
@@ -180,15 +173,17 @@
     🧪 Uso: Fase de teste<br>
     ✍️ Autor: Jhon</p>
     <button class="btn btn-disabled-red">📞 Suporte (Em desenvolvimento)</button>
+    <p style="margin-top:18px; font-size:0.95rem;">💬 Se você curtiu o <strong>NeuroScript</strong>, deixa sua avaliação ⭐<br> Isso ajuda muito a trazer novas atualizações 🚀</p>
     <button class="btn btn-disabled-yellow">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
 
   <!-- Card central -->
   <div class="main-card">
-    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="180"><br>
+    <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="160"><br>
     <h2>⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button id="btnFree" class="btn btn-free">⚡ Obter Versão Free</button>
+    <div id="popup" class="popup">✅ Copiado Script NeuroScript</div>
   </div>
 
   <!-- Painel avaliações -->
@@ -225,14 +220,14 @@
       }
     });
 
-    // Script do botão Free
+    // Botão Free
     document.getElementById("btnFree").addEventListener("click", () => {
       const scriptFree = `-- NeuroScript Free
 print("⚡ NeuroScript Free carregado!")`;
       navigator.clipboard.writeText(scriptFree).then(() => {
         const popup = document.getElementById("popup");
         popup.style.display = "block";
-        setTimeout(() => { popup.style.display = "none"; }, 2000);
+        setTimeout(() => { popup.style.display = "none"; }, 2500);
       });
     });
 
@@ -242,28 +237,8 @@ print("⚡ NeuroScript Free carregado!")`;
     });
 
     // Avaliações automáticas
-    const names = [
-      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
-      "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
-      "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
-      "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
-      "Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna",
-      "Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana",
-      "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
-      "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
-      "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
-      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"
-    ];
-
-    const reviews = [
-      "Valeu cada segundo! 🔥","Simples e eficiente ⚡","Script muito bom 💎","Top demais 🚀","Recomendo demais ⭐",
-      "Ótimo desempenho ✅","Sem bugs até agora 🛠️","Funciona perfeito 👌","Gostei bastante 😍","Faz o que promete 🎯",
-      "Muito prático de usar 🖱️","Melhor script que já testei 💯","Rápido e funcional ⚡","Atendeu todas expectativas 🙌",
-      "Super recomendo 🎉","Execução impecável 🏆","Interface simples 💡","Script leve e eficiente ⚙️","Surpreendeu bastante 🤯",
-      "Já testei vários, esse é o melhor 🔥","Muito bem feito ✨","Facilita demais a vida 🤖","Simplesmente incrível 💎",
-      "Funciona liso sem travar 🚀","Me surpreendeu bastante ⭐","Top qualidade 💯","Valeu muito a pena usar 🙏",
-      "Melhor atualização até agora 🔥","Rápido e sem complicação ⚡","Confio de olhos fechados 👌"
-    ];
+    const names = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana","André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel","Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio","Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo","Yasmin","Samuel","Paulo","Nicole","Vitor","Letícia","Murilo","Manuela","Rafael","Giovanna","Fábio","Lorena","Igor","Aline","William","Vitória","Sérgio","Marcos","Catarina","Joana","Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo","Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson","Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice","Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"];
+    const reviews = ["Valeu cada segundo! 🔥","Simples e eficiente ⚡","Script muito bom 💎","Top demais 🚀","Recomendo demais ⭐","Ótimo desempenho ✅","Sem bugs até agora 🛠️","Funciona perfeito 👌","Gostei bastante 😍","Faz o que promete 🎯","Muito prático de usar 🖱️","Melhor script que já testei 💯","Rápido e funcional ⚡","Atendeu todas expectativas 🙌","Super recomendo 🎉","Execução impecável 🏆","Interface simples 💡","Script leve e eficiente ⚙️","Surpreendeu bastante 🤯","Já testei vários, esse é o melhor 🔥","Muito bem feito ✨","Facilita demais a vida 🤖","Simplesmente incrível 💎","Funciona liso sem travar 🚀","Me surpreendeu bastante ⭐","Top qualidade 💯","Valeu muito a pena usar 🙏","Melhor atualização até agora 🔥","Rápido e sem complicação ⚡","Confio de olhos fechados 👌"];
 
     function addReview() {
       const container = document.getElementById("reviews");
