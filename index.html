@@ -36,7 +36,7 @@
       box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
     }
 
-    /* Painel de avaliações */
+    /* Painel avaliações */
     .fixed-eval {
       position: fixed;
       top: 30px;
@@ -65,8 +65,7 @@
       right: 30px;
       width: 360px;
       min-height: 400px;
-      font-size: 1.15rem; /* texto maior */
-      line-height: 1.6;
+      font-size: 1.05rem;
       padding: 24px;
       border-radius: 22px;
       text-align: center;
@@ -98,16 +97,21 @@
       font-weight: bold;
       cursor: pointer;
       transition: all 0.3s ease;
+      transform: scale(1);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
     }
 
     .btn-free {
       background: #00e5ff;
       color: black;
-      box-shadow: 0 0 12px #00e5ff, 0 0 20px #00e5ff, 0 0 40px #00ffff;
+      box-shadow: 0 0 12px #00e5ff, 0 0 20px #00e5ff;
     }
     .btn-free:hover {
       background: #00ffff;
-      box-shadow: 0 0 16px #00ffff, 0 0 35px #00ffff, 0 0 60px #00ffff;
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
     }
 
     .btn-pro {
@@ -117,7 +121,7 @@
     }
     .btn-pro:hover {
       background: #ffe066;
-      box-shadow: 0 0 16px #ffe066, 0 0 30px #ffe066;
+      box-shadow: 0 0 20px #ffe066, 0 0 40px #ffe066;
     }
 
     /* Botões desativados */
@@ -138,6 +142,16 @@
       font-size: 0.9rem;
       color: #bbb;
     }
+
+    /* Textos coloridos com emojis */
+    .highlight {
+      color: #00ffff;
+      text-shadow: 0 0 6px #00ffff, 0 0 15px #00ffff;
+    }
+    .highlight-gold {
+      color: #ffcc00;
+      text-shadow: 0 0 6px #ffcc00, 0 0 15px #ffcc00;
+    }
   </style>
 </head>
 <body>
@@ -145,12 +159,12 @@
 
   <!-- Painel esquerdo -->
   <div class="fixed-announcement">
-    <h2>⚡ Aviso sobre o NeuroScript</h2>
-    <p>Rapaziada que está apoiando o <strong>NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
-    <p>🛠️ Estado: Em desenvolvimento<br>
-    🐞 Bugs: Possíveis — reporte no suporte<br>
-    🧪 Uso: Fase de teste<br>
-    ✍️ Autor: Jhon</p>
+    <h2 class="highlight">⚡ Aviso sobre o NeuroScript</h2>
+    <p>Rapaziada que está apoiando o <strong class="highlight">NeuroScript</strong>, muito obrigado pelo suporte! O script está em desenvolvimento e pode apresentar alguns bugs.</p>
+    <p>🛠️ <span class="highlight">Estado</span>: Em desenvolvimento<br>
+    🐞 <span class="highlight">Bugs</span>: Possíveis — reporte no suporte<br>
+    🧪 <span class="highlight">Uso</span>: Fase de teste<br>
+    ✍️ <span class="highlight">Autor</span>: Jhon</p>
     <button class="btn btn-disabled">📞 Suporte (Em desenvolvimento)</button>
     <button class="btn btn-disabled">⭐ Avalie Aqui (Em manutenção)</button>
   </div>
@@ -158,7 +172,7 @@
   <!-- Card central -->
   <div class="main-card">
     <img src="https://raw.githubusercontent.com/bzzer244-boop/NeuroScript/refs/heads/main/logo.png" alt="NeuroScript Logo" width="180"><br>
-    <h2>⚡🤖 Obter NeuroScript</h2>
+    <h2 class="highlight">⚡🤖 Obter NeuroScript</h2>
     <p>Clique no botão abaixo para copiar o script da versão Free.</p>
     <button class="btn btn-free">⚡ Obter Versão Free</button>
   </div>
@@ -166,20 +180,15 @@
   <!-- Painel avaliações -->
   <div class="fixed-eval">
     <h3>⭐ Todas as Avaliações Nossas</h3>
-    <p><strong>Beatriz</strong>: Valeu cada segundo!</p>
-    <p><strong>Gabriel</strong>: Top demais!</p>
-    <p><strong>Lucas</strong>: Simples e eficiente!</p>
-    <p><strong>Ana</strong>: Valeu cada segundo!</p>
-    <p><strong>Mariana</strong>: Ótimo desempenho!</p>
-    <p><strong>João</strong>: Simples e eficiente!</p>
+    <div id="avaliacoes"></div>
   </div>
 
   <!-- Painel PRO -->
   <div class="fixed-pro">
-    <h3>🚀 Versão PRO</h3>
-    <p>🆓 <strong>Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
-    <p>💎 <strong>PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
-    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong>distribuindo a versão PRO para vocês!</strong></p>
+    <h3 class="highlight-gold">🚀 Versão PRO</h3>
+    <p>🆓 <strong class="highlight">Free</strong>: ⚡ Teleporte pro brainrot, 🕊️ Fly, 🎚️ Personalizar Velocidade, 🤖 Auto Collect.</p>
+    <p>💎 <strong class="highlight-gold">PRO</strong>: Tudo do Free + 🌍 entrar em outros servidores e 📦 coletar brainrot automaticamente.</p>
+    <p>Como ainda temos poucas pessoas usando, vou estar 🎁 <strong class="highlight-gold">distribuindo a versão PRO para vocês!</strong></p>
     <button class="btn btn-pro">🔥 Obter Versão PRO</button>
   </div>
 
@@ -201,6 +210,41 @@
         move: { enable: true, speed: 1, out_mode: "out" }
       }
     });
+
+    // 100 nomes diferentes
+    const nomes = [
+      "Ana", "Bruno", "Carla", "Diego", "Eduarda", "Felipe", "Gabriela", "Hugo", "Isabela", "João",
+      "Karina", "Lucas", "Mariana", "Nicolas", "Olívia", "Pedro", "Quésia", "Rafael", "Sofia", "Thiago",
+      "Ursula", "Vinicius", "Wesley", "Xavier", "Yara", "Zeca", "Arthur", "Bianca", "Caio", "Daniela",
+      "Enzo", "Fernanda", "Gustavo", "Helena", "Igor", "Juliana", "Kauan", "Larissa", "Matheus", "Natália",
+      "Otávio", "Paula", "Renan", "Samuel", "Talita", "Victor", "Willian", "Ximena", "Yasmin", "Zilda",
+      "Adriana", "Bernardo", "Clara", "Davi", "Elisa", "Fábio", "Geovana", "Henrique", "Iasmin", "Jorge",
+      "Kelly", "Leandro", "Mirella", "Nilton", "Orlando", "Priscila", "Rodrigo", "Sara", "Tatiane", "Ulisses",
+      "Valéria", "Wellington", "Xuxa", "Yuri", "Zuleide", "Alan", "Bárbara", "Catarina", "Denis", "Emanuel",
+      "Fabiana", "Gilberto", "Heitor", "Ingrid", "Jonas", "Kátia", "Luan", "Mário", "Nicole", "Oscar",
+      "Patrícia", "Raquel", "Simone", "Tadeu", "Vera"
+    ];
+
+    // 30 mensagens diferentes
+    const mensagens = [
+      "Top demais! 🔥", "Valeu cada segundo! 🚀", "Ótimo desempenho 💎", "Simples e eficiente ⚡",
+      "Nunca vi igual 👏", "Funciona muito bem ✅", "Recomendo a todos ⭐", "Maravilhoso 🤩",
+      "Script incrível! 🔥", "Melhor que já usei 💯", "Vale a pena! 🤑", "Muito bom mesmo 👌",
+      "Suporte nota 10 🎧", "Fácil de usar 🖱️", "Rápido e leve ⚡", "Qualidade absurda 💎",
+      "Gostei muito 😍", "Me ajudou demais 🤖", "Genial! 👏", "Topzera 🚀", "Excelente 💯",
+      "Perfeito 🔥", "Show de bola 🎉", "Bem prático 🛠️", "Curti demais 😎", "Recomendo fortemente ⭐",
+      "Vale muito a pena 💎", "Não me arrependo 🙌", "Sensacional 🔥", "Incrível resultado 🚀"
+    ];
+
+    // Gerar avaliações aleatórias
+    const container = document.getElementById("avaliacoes");
+    for (let i = 0; i < 10; i++) {
+      const nome = nomes[Math.floor(Math.random() * nomes.length)];
+      const msg = mensagens[Math.floor(Math.random() * mensagens.length)];
+      const p = document.createElement("p");
+      p.innerHTML = `<strong>${nome}</strong>: ${msg}`;
+      container.appendChild(p);
+    }
   </script>
 </body>
 </html>
