@@ -7,7 +7,7 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #061726;
+      background: linear-gradient(135deg, #02101f, #061726, #0a2440); /* cores da logo */
       color: white;
       overflow: hidden;
     }
@@ -18,7 +18,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background: #061726;
+      background: transparent;
     }
 
     /* Painéis */
@@ -26,7 +26,7 @@
     .fixed-eval,
     .fixed-pro,
     .main-card {
-      background: rgba(10, 30, 55, 0.9);
+      background: linear-gradient(145deg, rgba(2,16,31,0.95), rgba(10,36,64,0.9));
       box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
       border-radius: 20px;
       transition: transform 0.3s ease;
@@ -252,8 +252,7 @@ print("⚡ NeuroScript Free carregado!")`;
     });
 
     // Avaliações dinâmicas
-    const names = [
-      "Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
+    const names = ["Thiago","Pedro","Ana","Gabriel","Sofia","Rafa","João","Beatriz","Lucas","Mariana",
       "André","Clara","Felipe","Larissa","Vinicius","Bruno","Isabela","Mateus","Camila","Daniel",
       "Juliana","Cauã","Amanda","Henrique","Patrícia","Renan","Fernanda","Marcelo","Eduarda","Caio",
       "Luiza","Rodrigo","Bianca","Diego","Natália","Gustavo","Helena","Otávio","Carolina","Leonardo",
@@ -262,19 +261,16 @@ print("⚡ NeuroScript Free carregado!")`;
       "Cristian","Vanessa","Douglas","Emanuel","Carla","Jonas","Priscila","Luan","Marta","Hugo",
       "Tatiane","Arthur","Melissa","Maurício","Débora","Nelson","Cláudio","Iara","Paula","Edson",
       "Mirela","Júlio","Roberta","Ângelo","Cristina","Adriana","Afonso","Valentina","Breno","Alice",
-      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"
-    ];
+      "Raul","Elisa","Fabrício","Dayane","Alex","Mônica","Luciano","Verônica","Oscar","Silvia"];
 
-    const reviews = [
-      "Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
+    const reviews = ["Valeu cada segundo!","Simples e eficiente!","Script muito bom!","Top demais!","Recomendo demais!",
       "Ótimo desempenho!","Sem bugs até agora!","Funciona perfeito!","Gostei bastante!","Faz o que promete!",
       "Muito prático de usar!","Melhor script que já testei!","Rápido e funcional!","Atendeu minhas expectativas!",
       "Super recomendo!","Execução impecável!","Interface simples!","Script leve e eficiente!",
       "Não esperava que fosse tão bom!","Já testei vários, esse é o melhor!","Muito bem feito!",
       "Facilita demais a vida!","Simplesmente incrível!","Funciona liso sem travar!",
       "Me surpreendeu bastante!","Top qualidade!","Valeu muito a pena usar!","Melhor atualização até agora!",
-      "Rápido e sem complicação!","Confio de olhos fechados!"
-    ];
+      "Rápido e sem complicação!","Confio de olhos fechados!"];
 
     function addReview() {
       const container = document.getElementById("reviews");
